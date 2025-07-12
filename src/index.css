@@ -1,0 +1,39 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('/fonts/fonnts.com-Suisse_Intl_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('/fonts/fonnts.com-Suisse_Intl_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('/fonts/fonnts.com-Suisse_Intl_Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('/fonts/fonnts.com-Suisse_Intl_Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'Suisse Intl', sans-serif;
+  background-color: #02021E;
+  width:100%;
+}
