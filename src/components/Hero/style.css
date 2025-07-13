@@ -100,7 +100,6 @@
     flex-direction: column;
     width: 90%;
     gap: 2rem;
-    background-color: red;
     min-height: 100vh;
   }
   .hero__left,

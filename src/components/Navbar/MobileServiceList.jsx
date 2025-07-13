@@ -1,5 +1,5 @@
 import "./ServiceList.css";
-import { RiArrowDropLeftLine } from "react-icons/ri";
+import { RiArrowDropLeftLine,RiArrowDropRightLine } from "react-icons/ri";
 
 const designServices = [
     "UI/UX design",
@@ -22,6 +22,7 @@ const developmentServices = [
 ];
 
 const MobileServiceList = () => {
+    
     return (
 
         <div className="service-list">

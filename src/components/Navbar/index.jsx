@@ -2,7 +2,7 @@ import './style.css';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { RiArrowDropDownLine, RiArrowDropUpLine, RiArrowDropRightLine } from 'react-icons/ri';
 import { useState } from 'react';
-import MobileServiceList from './MobileServiceList';
+import Menu from './Menu';
 
 const Navbar = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -10,7 +10,7 @@ const Navbar = () => {
     const [isHamBurgerOpen,setIsHamBurgerOpen]=useState(false)
     return (
         <header
-            className={`navbar ${isServicesOpen ? 'no-border' : ''}`}
+            className={`navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
             onMouseLeave={() => setIsServicesOpen(false)}
         >
             <div className="navbar__left">
@@ -146,7 +146,7 @@ const Navbar = () => {
             )}
 
             {
-                isHamBurgerOpen && <MobileServiceList/>
+                isHamBurgerOpen && <Menu setIsHamBurgerOpen={setIsHamBurgerOpen} setIsServicesOpen={setIsServicesOpen}/>
             }
         </header>
     );
