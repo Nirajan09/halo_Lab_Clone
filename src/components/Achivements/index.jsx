@@ -1,4 +1,3 @@
-
 const achievements = [
   {
     img: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df22453a88d0237804696b_award-dribbble.svg",
@@ -24,8 +23,8 @@ const achievements = [
 
 const Achievements = () => {
   return (
-    <div className="min-h-[150px] sm:min-h-[200px] container  section  py-12 flex justify-between items-center rounded-xl overflow-x-auto xl:overflow-visible">
-      <div className="flex gap-8 md:w-[60%]">
+    <div className=" container section py-12 px-4 md:px-10 flex gap-6 justify-between rounded-xl mx-auto overflow-x-auto xl:overflow-visible">
+      <div className="flex gap-8 min-w-max">
         {achievements.map((item, idx) => (
           <div
             key={idx}
@@ -37,7 +36,7 @@ const Achievements = () => {
               className="w-12 h-12 mb-4 object-contain"
               loading="lazy"
             />
-            <span className="text-white text-base md:text-lg font-semibold  px-4">
+            <span className="text-white text-base md:text-lg font-semibold px-4">
               {item.title}
             </span>
           </div>
