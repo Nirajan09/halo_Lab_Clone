@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Menu.css';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 
-const Menu = ({setIsServicesOpen}) => {
+const Menu = () => {
   
   const [openServices, setOpenServices] = useState(false)
   const [openResources, setOpenResources] = useState(false)

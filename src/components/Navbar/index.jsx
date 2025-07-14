@@ -3,6 +3,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { RiArrowDropDownLine, RiArrowDropUpLine, RiArrowDropRightLine } from 'react-icons/ri';
 import { useState } from 'react';
 import Menu from './Menu';
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -10,7 +11,7 @@ const Navbar = () => {
     const [isHamBurgerOpen,setIsHamBurgerOpen]=useState(false)
     return (
         <header
-            className={`navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
+            className={`my-container section navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
             onMouseLeave={() => setIsServicesOpen(false)}
         >
             <div className="navbar__left">
@@ -87,7 +88,9 @@ const Navbar = () => {
             </div>
 
             <div className="navbar__hamburger" onClick={()=>setIsHamBurgerOpen(!isHamBurgerOpen)}>
-                <RxHamburgerMenu size={24} />
+                {!isHamBurgerOpen?
+                <RxHamburgerMenu size={24} />:<RxCross2 />
+                }
             </div>
 
             {isServicesOpen && (
