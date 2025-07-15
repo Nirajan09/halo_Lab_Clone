@@ -1,6 +1,6 @@
 import { RiArrowRightUpLine } from "react-icons/ri";
 const HeroServices = () => (
-  
+
   <div className="my-container section min-h-[30vh] flex flex-col items-center justify-center py-4 ">
     {/* Headline */}
     <div className="text-center mb-12">
@@ -9,7 +9,7 @@ const HeroServices = () => (
       </h1>
     </div>
 
-      {/* Services Cards */}
+    {/* Services Cards */}
     <div className="flex flex-col sm:flex-row gap-8 bg-[#FFFFFF] rounded-2xl p-6 md:p-10 max-w-4xl w-full">
       {/* Design Card */}
       <div className="flex-1 rounded-xl px-4 py-6 shadow relative bg-[#F5F5F7]">
@@ -70,17 +70,23 @@ const HeroServices = () => (
     </div>
 
     {/* Call to Action */}
-    <div className="mt-10 w-full flex justify-center p-6 pb-0 md:p-10 max-w-4xl">
-      <div className="flex flex-1 flex-col sm:flex-row justify-between sm:justify-between items-center bg-[#221B40] rounded-xl px-6 py-4 gap-6 shadow-lg">
-        <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/656d9abe1664aff65f24a621_icon-halo.svg" loading="lazy" alt="" className="hidden sm:block"></img>
-        <span className="text-white text-base font-medium">
-          Need bold design or reliable code or both? You're in the right place.
+    <div className="flex items-center flex-col sm:flex-row justify-between rounded-2xl bg-[#231B41] px-6 py-4 w-full max-w-5xl mx-auto mt-8 shadow-md">
+      <div className="flex justify-between items-center gap-6 mb-4 sm:mb-0">
+        <span className="flex items-center justify-center w-10 h-10 rounded-full">
+          <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/656d9abe1664aff65f24a621_icon-halo.svg" loading="lazy" alt="" className="hidden sm:block"></img>
         </span>
-        <button className="bg-[#ffc23c] hover:bg-[#ffb300] text-[#19163a] text-base rounded-full px-12 py-2 transition">
-          BOOK A CALL
-        </button>
+        <span className="text-white text-sm md:text-base lg:text-lg font-medium">
+          Need <span className="font-bold">bold design</span> or <span className="font-bold">reliable code</span> or both? You're in the right place.
+        </span>
       </div>
+      <button
+        className="ml-6 px-5 py-2  bg-yellow-400 text-[#191531] rounded-full shadow transition hover:bg-yellow-300 focus:outline-none"
+        type="button"
+      >
+        BOOK A CALL
+      </button>
     </div>
+
   </div>
 );
 

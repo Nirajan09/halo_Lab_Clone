@@ -20,12 +20,21 @@ const achievements = [
     title: "100% Job Success on Upwork",
   },
 ];
-
 const Achievements = () => {
+  const repeatedAchievements = [...achievements, ...achievements, ...achievements,...achievements];
+
+  // Adjust duration for scroll speed
+  const SCROLL_DURATION = 30; // seconds
+
   return (
-    <div className=" container section py-12 px-4 md:px-10 flex gap-6 justify-between rounded-xl mx-auto overflow-x-auto xl:overflow-visible">
-      <div className="flex gap-8 min-w-max">
-        {achievements.map((item, idx) => (
+    <div className="container section py-12 px-4 md:px-10 rounded-xl mx-auto overflow-x-hidden">
+      <div
+        className="flex gap-8 min-w-max animate-achievements-marquee"
+        style={{
+          animation: `achievements-marquee ${SCROLL_DURATION}s linear infinite`
+        }}
+      >
+        {repeatedAchievements.map((item, idx) => (
           <div
             key={idx}
             className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md"
@@ -33,7 +42,7 @@ const Achievements = () => {
             <img
               src={item.img}
               alt={item.alt}
-              className="w-12 h-12 mb-4 object-contain"
+              className="w-20 h-20 mb-4 object-contain"
               loading="lazy"
             />
             <span className="text-white text-base md:text-lg font-semibold px-4">
