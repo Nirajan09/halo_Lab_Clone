@@ -50,7 +50,7 @@ const ContactSection = () => {
                     </div>
                 </div>
                 {/* Column 2: Navigation */}
-                <div className='flex justify-end'>
+                <div className='flex md:justify-end'>
                     <ul className="space-y-2 mt-6 md:mt-0 ">
                         <li className="text-xl flex items-center gap-1">Our Services <span>+</span></li>
                         {

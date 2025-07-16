@@ -11,6 +11,7 @@ import BlogSection from './components/blog-section'
 import BlogCards from './components/blog-cards'
 import ProjectDiscussionSection from './components/project-discussion-section'
 import ContactSection from './components/contact-section'
+import FooterSection from './components/footer-section'
 
 function App() {
 
@@ -18,21 +19,20 @@ function App() {
   return (
     <>
       <div className='my-container'>
-        <NavbarSection/>
-        <HeroSection/>
-        <TrustedCompaniesSection/>
-        <FounderSection/>
-        <AchievementsSection/>
-        <HeroServicesSection/>
-        <TestimonialBannerSection/>
-        <StatCards/>
-        <BlogSection/>
-        <BlogCards/>
+        <NavbarSection />
+        <HeroSection />
+        <TrustedCompaniesSection />
+        <FounderSection />
+        <AchievementsSection />
+        <HeroServicesSection />
+        <TestimonialBannerSection />
+        <StatCards />
+        <BlogSection />
+        <BlogCards />
+        <ProjectDiscussionSection />
+        <ContactSection />
+        <FooterSection />
       </div>
-        <ProjectDiscussionSection/>
-        <div className='my-container'>
-          <ContactSection/>
-        </div>
     </>
   )
 }
