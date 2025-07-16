@@ -8,6 +8,7 @@ import TestimonialBannerSection from './components/testimonial-banner'
 import TrustedCompaniesSection from './components/trusted-companies'
 import StatCards from './components/stats-cards'
 import BlogSection from './components/blog-section'
+import BlogCards from './components/blog-cards'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <TestimonialBannerSection/>
       <StatCards/>
       <BlogSection/>
+      <BlogCards/>
     </div>
   )
 }
