@@ -9,23 +9,27 @@ import TrustedCompaniesSection from './components/trusted-companies'
 import StatCards from './components/stats-cards'
 import BlogSection from './components/blog-section'
 import BlogCards from './components/blog-cards'
+import ProjectDiscussionSection from './components/project-discussion-section'
 
 function App() {
 
 
   return (
-    <div className='my-container'>
-      <NavbarSection/>
-      <HeroSection/>
-      <TrustedCompaniesSection/>
-      <FounderSection/>
-      <AchievementsSection/>
-      <HeroServicesSection/>
-      <TestimonialBannerSection/>
-      <StatCards/>
-      <BlogSection/>
-      <BlogCards/>
-    </div>
+    <>
+      <div className='my-container'>
+        <NavbarSection/>
+        <HeroSection/>
+        <TrustedCompaniesSection/>
+        <FounderSection/>
+        <AchievementsSection/>
+        <HeroServicesSection/>
+        <TestimonialBannerSection/>
+        <StatCards/>
+        <BlogSection/>
+        <BlogCards/>
+      </div>
+        <ProjectDiscussionSection/>
+    </>
   )
 }
 
