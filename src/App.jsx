@@ -7,6 +7,7 @@ import NavbarSection from './components/header-section'
 import TestimonialBannerSection from './components/testimonial-banner'
 import TrustedCompaniesSection from './components/trusted-companies'
 import StatCards from './components/stats-cards'
+import BlogSection from './components/blog-section'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <HeroServicesSection/>
       <TestimonialBannerSection/>
       <StatCards/>
+      <BlogSection/>
     </>
   )
 }
