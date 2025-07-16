@@ -10,6 +10,7 @@ import StatCards from './components/stats-cards'
 import BlogSection from './components/blog-section'
 import BlogCards from './components/blog-cards'
 import ProjectDiscussionSection from './components/project-discussion-section'
+import ContactSection from './components/contact-section'
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
         <BlogCards/>
       </div>
         <ProjectDiscussionSection/>
+        <div className='my-container'>
+          <ContactSection/>
+        </div>
     </>
   )
 }
