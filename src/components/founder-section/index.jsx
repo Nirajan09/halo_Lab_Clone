@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Founder = () => {
+const FounderSection = () => {
   return (
     <div className="my-container section max-h-[350px] flex flex-col  items-start justify-between px-8 py-12 md:flex-row-reverse rounded-xl  mx-auto ">
       <div className="mt-0 md:w-[60%]">
@@ -23,4 +23,4 @@ const Founder = () => {
   );
 }
 
-export default Founder
+export default FounderSection

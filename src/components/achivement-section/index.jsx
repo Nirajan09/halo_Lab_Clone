@@ -20,7 +20,7 @@ const achievements = [
     title: "100% Job Success on Upwork",
   },
 ];
-const Achievements = () => {
+const AchievementsSection = () => {
   const repeatedAchievements = [...achievements, ...achievements, ...achievements,...achievements];
 
   // Adjust duration for scroll speed
@@ -55,4 +55,4 @@ const Achievements = () => {
   );
 };
 
-export default Achievements;
+export default AchievementsSection;

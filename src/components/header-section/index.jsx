@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Menu from './Menu';
 import { RxCross2 } from "react-icons/rx";
 
-const Navbar = () => {
+const NavbarSection = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isResourcesOpen, setIsResourcesOpen] = useState(false);
     const [isHamBurgerOpen,setIsHamBurgerOpen]=useState(false)
@@ -155,4 +155,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavbarSection;

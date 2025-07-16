@@ -1,24 +1,24 @@
 import './App.css'
-import Achievements from './components/Achivements'
-import Founder from './components/Founder'
-import Hero from './components/Hero'
-import HeroServices from './components/HeroServices'
-import Navbar from './components/Navbar'
-import TestimonialsBanner from './components/TestimonialsBanner'
-import TrustedCompanies from './components/TrustedCompanies'
+import AchievementsSection from './components/achivement-section'
+import FounderSection from './components/founder-section'
+import HeroSection from './components/hero-section'
+import HeroServicesSection from './components/hero-services'
+import NavbarSection from './components/header-section'
+import TestimonialBannerSection from './components/testimonial-banner'
+import TrustedCompaniesSection from './components/trusted-companies'
 
 function App() {
 
 
   return (
     <>
-      <Navbar/>
-      <Hero/>
-      <TrustedCompanies/>
-      <Founder/>
-      <Achievements/>
-      <HeroServices/>
-      <TestimonialsBanner/>
+      <NavbarSection/>
+      <HeroSection/>
+      <TrustedCompaniesSection/>
+      <FounderSection/>
+      <AchievementsSection/>
+      <HeroServicesSection/>
+      <TestimonialBannerSection/>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { RiArrowRightUpLine } from "react-icons/ri";
-const HeroServices = () => (
+const HeroServicesSection = () => (
 
   <div className="my-container section min-h-[30vh] flex flex-col items-center justify-center py-4 ">
     {/* Headline */}
@@ -10,7 +10,7 @@ const HeroServices = () => (
     </div>
 
     {/* Services Cards */}
-    <div className="flex flex-col sm:flex-row gap-8 bg-[#FFFFFF] rounded-2xl p-6 md:p-10 max-w-4xl w-full">
+    <div className="flex flex-col sm:flex-row gap-8 bg-[#FFFFFF] rounded-2xl p-6 md:p-10  w-full">
       {/* Design Card */}
       <div className="flex-1 rounded-xl px-4 py-6 shadow relative bg-[#F5F5F7]">
         <div className="flex items-center justify-between mb-4 border-b border-[#b3b3b8] w-full pb-3">
@@ -70,8 +70,8 @@ const HeroServices = () => (
     </div>
 
     {/* Call to Action */}
-    <div className="flex items-center flex-col sm:flex-row justify-between rounded-2xl bg-[#231B41] px-6 py-4 w-full max-w-5xl mx-auto mt-8 shadow-md">
-      <div className="flex justify-between items-center gap-6 mb-4 sm:mb-0">
+    <div className="flex items-center flex-col sm:flex-row justify-between rounded-2xl bg-[#231B41] px-6 py-4 w-full mx-auto mt-8 shadow-md">
+      <div className="flex justify-between items-center gap-6 mb-4 sm:mb-0 ">
         <span className="flex items-center justify-center w-10 h-10 rounded-full">
           <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/656d9abe1664aff65f24a621_icon-halo.svg" loading="lazy" alt="" className="hidden sm:block"></img>
         </span>
@@ -90,4 +90,4 @@ const HeroServices = () => (
   </div>
 );
 
-export default HeroServices;
+export default HeroServicesSection;

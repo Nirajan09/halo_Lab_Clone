@@ -7,7 +7,7 @@
 }
 
 .section {
-  margin-top:5rem;
+  margin-top: 5rem;
 }
 
 /* xs */
@@ -60,32 +60,34 @@
 }
 
 .scrollbar-hide {
-  scrollbar-width: none;  
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;            
+  display: none;
 }
 
 @keyframes banner-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-4320px); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-4320px);
+  }
 }
 
 @media (max-width: 1024px) {
   .animate-banner-scroll {
     animation: banner-scroll 40s linear infinite;
-    will-change: transform;
-  }
-}
-@media (min-width: 1024px) {
-  .animate-banner-scroll {
-    animation: none !important;
   }
 }
 
 @keyframes achievements-marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

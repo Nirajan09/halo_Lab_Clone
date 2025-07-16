@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TrustedCompanies = () => {
+const TrustedCompaniesSection = () => {
     return (
         <div className="my-container section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white max-w-3xl">
             <p className="absolute left-[25%] top-[-.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center mb-8 z-10 sm:text-size-xs lg:text-size-base xl:text-size-lg">
@@ -30,4 +30,4 @@ const TrustedCompanies = () => {
     )
 }
 
-export default TrustedCompanies
+export default TrustedCompaniesSection

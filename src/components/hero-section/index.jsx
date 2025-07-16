@@ -1,4 +1,4 @@
-const Hero = () => {
+const HeroSection = () => {
   return (
     <div className="my-container mt-[3rem] flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[70vh] gap-6">
       {/* Left Section: Headline and CTA */}
@@ -47,4 +47,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSection;
