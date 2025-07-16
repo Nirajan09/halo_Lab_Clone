@@ -6,6 +6,7 @@ import HeroServicesSection from './components/hero-services'
 import NavbarSection from './components/header-section'
 import TestimonialBannerSection from './components/testimonial-banner'
 import TrustedCompaniesSection from './components/trusted-companies'
+import StatCards from './components/stats-cards'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       <AchievementsSection/>
       <HeroServicesSection/>
       <TestimonialBannerSection/>
+      <StatCards/>
     </>
   )
 }
