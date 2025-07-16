@@ -27,7 +27,7 @@ const AchievementsSection = () => {
   const SCROLL_DURATION = 30; // seconds
 
   return (
-    <div className="container section py-12 px-4 md:px-10 rounded-xl mx-auto overflow-x-hidden">
+    <div className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
       <div
         className="flex gap-8 min-w-max animate-achievements-marquee"
         style={{

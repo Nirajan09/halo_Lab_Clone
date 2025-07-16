@@ -2,7 +2,7 @@ import React from 'react'
 
 const TrustedCompaniesSection = () => {
     return (
-        <div className="my-container section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white max-w-3xl">
+        <div className="section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white ">
             <p className="absolute left-[25%] top-[-.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center mb-8 z-10 sm:text-size-xs lg:text-size-base xl:text-size-lg">
                 Trusted by global brands &amp; SMBs in the US and Europe
             </p>

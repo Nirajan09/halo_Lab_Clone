@@ -13,7 +13,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='my-container'>
       <NavbarSection/>
       <HeroSection/>
       <TrustedCompaniesSection/>
@@ -23,7 +23,7 @@ function App() {
       <TestimonialBannerSection/>
       <StatCards/>
       <BlogSection/>
-    </>
+    </div>
   )
 }
 

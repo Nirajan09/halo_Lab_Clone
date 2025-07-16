@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <div className="my-container mt-[3rem] flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[70vh] gap-6">
+    <div className="mt-[3rem] flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[70vh] gap-6">
       {/* Left Section: Headline and CTA */}
       <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white h-full">
         <h1 className="text-4xl xl:text-5xl font-normal leading-tight mb-8">

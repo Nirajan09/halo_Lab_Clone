@@ -1,10 +1,9 @@
-import React from 'react'
 
 const FounderSection = () => {
   return (
-    <div className="my-container section max-h-[350px] flex flex-col  items-start justify-between px-8 py-12 md:flex-row-reverse rounded-xl  mx-auto ">
+    <div className="section max-h-[350px] flex flex-col  items-start justify-between md:flex-row-reverse rounded-xl  mx-auto ">
       <div className="mt-0 md:w-[60%]">
-        <p className="text-white text-2xl lg:text-4xl font-medium leading-snug">
+        <p className="text-white text-justify text-2xl lg:text-4xl font-medium leading-snug">
           Over the past 12 years, we've perfected our Design &amp; Development game and are eager to help passionate Founders perfect theirs.
           Success is a team play, right? Let's aim for the top together!
         </p>

@@ -1,7 +1,7 @@
 import { RiArrowRightUpLine } from "react-icons/ri";
 const HeroServicesSection = () => (
 
-  <div className="my-container section min-h-[30vh] flex flex-col items-center justify-center py-4 ">
+  <div className="section min-h-[30vh] flex flex-col items-center justify-center">
     {/* Headline */}
     <div className="text-center mb-12">
       <h1 className="text-5xl md:text-6xl font-normal w-full  text-white leading-tight">

@@ -11,7 +11,7 @@ const NavbarSection = () => {
     const [isHamBurgerOpen,setIsHamBurgerOpen]=useState(false)
     return (
         <header
-            className={`my-container section navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
+            className={`navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
             onMouseLeave={() => setIsServicesOpen(false)}
         >
             <div className="navbar__left">

@@ -86,7 +86,7 @@ export default function TestimonialBannerSection() {
   const handleNext = () => setCurrent(prev => (prev === total - 1 ? 0 : prev + 1));
 
   return (
-    <section className="my-container section pb-10 pt-16 md:px-0">
+    <section className="section">
       {/* Clutch badge and headline */}
       <div className="max-w-2xl mx-auto flex flex-col items-start sm:items-center">
         <div className="flex items-center justify-between gap-3 mb-5 border border-white rounded-3xl px-6 py-4">
@@ -105,11 +105,11 @@ export default function TestimonialBannerSection() {
         </h2>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-10 grid gap-10 overflow-x-auto lg:overflow-hidden ">
+      <div className="  mt-10 grid gap-10 overflow-x-auto lg:overflow-hidden ">
 
         <div className="flex gap-8 animate-banner-scroll" style={{ width: `432px` }}>
 
-          <div className="rounded-2xl p-7 w-[400px] flex-shrink-0 overflow-hidden h-[60vh]  flex-col shadow-lg hidden lg:flex xl:mr-48">
+          <div className="rounded-2xl p-7 w-[400px] flex-shrink-0 overflow-hidden h-[60vh]  flex-col shadow-lg hidden lg:flex xl:mr-71">
 
             <div className="h-[70vh] relative">
               <img
