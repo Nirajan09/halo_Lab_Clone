@@ -16,7 +16,6 @@ const cards = [
 ];
 
 const BlogCards = () => {
-
     const [hoveredIndex, setHoveredIndex] = useState(null)
 
     return (

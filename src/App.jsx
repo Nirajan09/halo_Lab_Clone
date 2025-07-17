@@ -12,6 +12,7 @@ import BlogCards from './components/blog-cards'
 import ProjectDiscussionSection from './components/project-discussion-section'
 import ContactSection from './components/contact-section'
 import FooterSection from './components/footer-section'
+import TestimonialCard from './components/testimonial-cards'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <AchievementsSection />
         <HeroServicesSection />
         <TestimonialBannerSection />
+        <TestimonialCard/>
         <StatCards />
         <BlogSection />
         <BlogCards />
