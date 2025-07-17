@@ -29,7 +29,7 @@ const BlogCards = () => {
                         className="bg-[#3827C8] rounded-[2rem] pt-12 pb-10 px-10 relative min-h-[400px] flex flex-col justify-end shadow-lg"
                     >
                         <div className="absolute left-1/2 -translate-x-1/2 top-8">
-                            <img src={hoveredIndex === idx?card.imageAfterAnimate:card.imageBeforeAnimate} onMouseEnter={()=>setHoveredIndex(idx)} onMouseLeave={()=>setHoveredIndex(null)} alt="" />
+                            <img className="cursor-pointer" src={hoveredIndex === idx?card.imageAfterAnimate:card.imageBeforeAnimate} onMouseEnter={()=>setHoveredIndex(idx)} onMouseLeave={()=>setHoveredIndex(null)} alt="" />
                         </div>
                         <div className="mt-32">
                             <h3 className="text-white text-xl md:text-2xl font-bold leading-snug mb-6">

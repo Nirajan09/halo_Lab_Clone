@@ -40,7 +40,7 @@ const FooterSection = () => (
                     <div className="flex items-center bg-[#191A2E] rounded-lg group-hover:hidden">
                         <img src={badge.imageUrl} alt="" lazy="loading" className="w-full" />
                     </div>
-                    <div className="bg-[#fbfbfd] text-black rounded-lg hidden group-hover:flex w-40 h-12 items-center justify-center text-center">
+                    <div className="bg-[#fbfbfd] cursor-pointer text-black rounded-lg hidden group-hover:flex w-40 h-12 items-center justify-center text-center">
                         <p className="font-semibold text-sm">{badge.hoverContent}</p>
                     </div>
                 </div>
@@ -73,8 +73,8 @@ const FooterSection = () => (
             <div className="border-t border-white/10 flex justify-between mt-1"></div>
         </div>
 
-        {/* Bottom grid row */}
-        <div className="max-w-6xl mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 items-center text-xs text-white/60 px-4">
+        {/* Bottom row */}
+        <div className="max-w-6xl mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 items-center text-xs text-white/60 ">
             <span className="justify-self-start text-base">© Halo Lab. All rights reserved</span>
             <div className="flex justify-self-end gap-6 mt-3 sm:mt-0 text-base">
                 <a href="#" className="hover:underline">Manage cookies</a>
