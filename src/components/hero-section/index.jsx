@@ -14,7 +14,7 @@ const HeroSection = () => {
             <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67bdb3b2f4c3ff24144f7bc0_home-hero-fire.avif" loading="lazy" alt="" className="w-12 h-12 object-contain" />
             <p className="text-xl">12 years of design-driven development for B2B products</p>
           </span>
-          <button className="flex bg-[#ffd23f] text-black rounded-full px-6 py-2 mr-auto hover:bg-yellow-300 transition">
+          <button className="flex bg-[#ffd23f] text-black rounded-full px-6 py-2 mx-auto hover:bg-yellow-300 transition mt-2">
             BOOK A CALL
           </button>
         </div>
