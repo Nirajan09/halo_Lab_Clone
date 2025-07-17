@@ -1,6 +1,5 @@
 // TestimonialCard.jsx
 import { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
 import { FaLessThan } from "react-icons/fa6";
 import { FaGreaterThan } from "react-icons/fa6";
 
@@ -76,7 +75,7 @@ export default function TestimonialCard() {
   const contactIcons = [<FaLessThan />, <FaGreaterThan />]
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  // Cycle testimonial every 5 seconds
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);

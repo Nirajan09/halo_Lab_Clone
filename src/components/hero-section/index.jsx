@@ -1,15 +1,15 @@
 const HeroSection = () => {
   return (
-    <div className="mt-[3rem] flex flex-col lg:flex-row justify-between min-h-[50vh] lg:min-h-[70vh] gap-6">
+    <div className="mt-[3rem] grid grid-cols-1 md:grid-cols-2 max-h-screen md:h-[70vh] gap-6">
       {/* Left Section: Headline and CTA */}
-      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white h-full">
-        <h1 className="text-4xl xl:text-5xl font-normal leading-tight mb-8">
+      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white h-[70vh]">
+        <h1 className="text-center text-2xl md:text-3xl xl:text-5xl font-normal">
           DESIGN & TECH<br />
           AGENCY HELPING<br />
           BRANDS BECOME<br />
           <span className="text-[#ffd23f]">TOP 1%</span>
         </h1>
-        <div className="flex flex-col mt-3">
+        <div className="flex flex-col">
           <span className="flex items-center text-sm gap-5 mb-3">
             <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67bdb3b2f4c3ff24144f7bc0_home-hero-fire.avif" loading="lazy" alt="" className="w-12 h-12 object-contain" />
             <p className="text-xl">12 years of design-driven development for B2B products</p>
@@ -21,7 +21,7 @@ const HeroSection = () => {
       </div>
 
       {/* Right Section: Video */}
-      <div className="flex items-center bg-[#ffd23f] rounded-3xl w-full text-white p-6 h-full">
+      <div className="flex items-center bg-[#ffd23f] rounded-3xl w-full text-white p-6 h-[70vh]">
         <div className="relative rounded-full mx-auto bg-[#f5f3f0] flex items-center justify-center shadow-lg w-full h-full aspect-square max-w-[500px] max-h-[500px]">
           <video
             className="w-full h-full object-cover rounded-xl"
