@@ -74,13 +74,29 @@ const FooterSection = () => (
         </div>
 
         {/* Bottom row */}
-        <div className="max-w-6xl mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 items-center text-xs text-white/60 ">
-            <span className="justify-self-start text-base">© Halo Lab. All rights reserved</span>
-            <div className="flex justify-self-end gap-6 mt-3 sm:mt-0 text-base">
-                <a href="#" className="hover:underline">Manage cookies</a>
-                <a href="#" className="hover:underline">Terms and Conditions</a>
-                <a href="#" className="hover:underline">Privacy Policy</a>
-            </div>
+        <div className="mx-auto mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 items-center text-xs text-white/60 ">
+            <div className="text-base">© Halo Lab. All rights reserved</div>
+            <div className="flex gap-6 mt-3 sm:mt-0 text-base w-full">
+  <a
+    href="#"
+    className="flex items-center justify-center hover:underline border border-white rounded-2xl w-50 text-center h-12"
+  >
+    Manage cookies
+  </a>
+  <a
+    href="#"
+    className="flex items-center justify-center hover:underline border border-white rounded-2xl w-50 text-center h-12"
+  >
+    Terms and Conditions
+  </a>
+  <a
+    href="#"
+    className="flex items-center justify-center hover:underline border border-white rounded-2xl w-50 text-center h-12"
+  >
+    Privacy Policy
+  </a>
+</div>
+
         </div>
     </footer>
 );
