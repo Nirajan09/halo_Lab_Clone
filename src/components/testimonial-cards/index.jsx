@@ -72,7 +72,6 @@ export default function TestimonialCard() {
       workImage: "./testimonials/works/678a885d60016fcf4a0ee5b5_results-NyraHealth.avif"
     },
   ]
-  const contactIcons = [<FaLessThan />, <FaGreaterThan />]
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -92,7 +91,7 @@ export default function TestimonialCard() {
       </h1>
 
       <div className=" bg-white p-8 w-full rounded-3xl shadow-lg">
-        <div className="bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row  w-full p-8 md:p-0 transition-all duration-700 ease-in-out ">
+        <div className="bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row  w-full p-2 md:p-8 md:p-0 transition-all duration-700 ease-in-out ">
           {/* Left side: Text content */}
           <div className="flex-1 p-4 flex flex-col justify-center ">
             <span className="text-sm text-black font-normal mb-2 md:mb-4 flex items-center gap-1 uppercase ">
@@ -104,7 +103,7 @@ export default function TestimonialCard() {
                 loading="lazy"
               />
             </span>
-            <h3 className="text-black text-3xl font-medium mb-2 md:mb-6 w-full md:max-w-[20ch] min-h-[10vh] md:min-h-[20vh]">{card.works}</h3>
+            <h3 className="text-black text-xl sm:text-2xl font-medium w-full md:max-w-[20ch] min-h-[10vh] md:min-h-[20vh]">{card.works}</h3>
             <div className="flex items-center mb-3">
               {[...Array(5)].map((_, i) => (
                 <img
@@ -115,7 +114,7 @@ export default function TestimonialCard() {
                 />
               ))}
             </div>
-            <p className="text-[#4A4A5E] text-lg font-medium mb-4 min-h-[10vh] md:min-h-[22vh] w-full md:max-w-[32ch]">“{card.text}”</p>
+            <p className="text-[#4A4A5E] text-lg font-medium mb-4 h-[14vh] md:min-h-[22vh] w-full md:max-w-[32ch]">“{card.text}”</p>
             <div className="flex items-center gap-3 mt-2">
               <img
                 src={card.authorImage}
