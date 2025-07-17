@@ -60,23 +60,6 @@ const NavbarSection = () => {
                                 )}
                             </a>
                         </li>
-
-                        {isResourcesOpen && (
-                            <div className="resources__dropdown">
-                                <div className="resources__dropdown__columns">
-                                    <div className="resources__column">
-                                        <div className="first">
-                                            {['Our Blog', 'Open Source'].map((text) => (
-                                                <div className="dropdown__column__row" key={text}>
-                                                    <span>{text}</span>
-                                                    <RiArrowDropRightLine className="hover-arrow" size={24} />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
                     </div>
 
                     <li><a href="/">Pricing</a></li>
@@ -147,6 +130,23 @@ const NavbarSection = () => {
                     </div>
                 </div>
             )}
+
+            {isResourcesOpen && (
+                            <div className="resources__dropdown">
+                                <div className="resources__dropdown__columns">
+                                    <div className="resources__column">
+                                        <div className="first">
+                                            {['Our Blog', 'Open Source'].map((text) => (
+                                                <div className="dropdown__column__row" key={text}>
+                                                    <span>{text}</span>
+                                                    <RiArrowDropRightLine className="hover-arrow" size={24} />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
             {
                 isHamBurgerOpen && <Menu setIsHamBurgerOpen={setIsHamBurgerOpen} setIsServicesOpen={setIsServicesOpen}/>

@@ -70,7 +70,7 @@
     display:none;
 }
 
-.services__dropdown,.resources__dropdown {
+.services__dropdown{
   position: absolute;
   top: 100%; 
   left: 50%;
@@ -109,6 +109,8 @@
 .first{
     width:100%;
 }
+
+
 .dropdown__column__row{
     font-weight: 500;
     font-size: 15.026px;
@@ -149,7 +151,7 @@
 .resources__dropdown {
   position: absolute;
   top: 100%; 
-  left: 50%;
+  left: 62%;
   width: 18vw;
   display: flex;
    transform: translateX(-50%);
