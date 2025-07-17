@@ -116,7 +116,7 @@ const NavbarSection = () => {
                             <div className="first">
                                 {['Web design', 'Landing page design', 'Mobile app design', 'Pitch deck design'].map((text) => (
                                     <div className="dropdown__column__row" key={text}>
-                                        <span>{text}</span>
+                                        <div>{text}</div>
                                         <RiArrowDropRightLine className="hover-arrow" size={24} />
                                     </div>
                                 ))}
