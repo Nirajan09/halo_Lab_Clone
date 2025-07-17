@@ -80,11 +80,12 @@ const HeroServicesSection = () => (
         </span>
       </div>
       <button
-        className="ml-6 px-5 py-2  bg-yellow-400 text-[#191531] rounded-full shadow transition hover:bg-yellow-300 focus:outline-none"
-        type="button"
-      >
-        BOOK A CALL
-      </button>
+  className=" ml-6 px-5 py-2 bg-yellow-400 text-[#191531] rounded-full shadow transition  hover:bg-yellow-300 focus:outline-none text-sm md:text-base lg:text-lg font-normal whitespace-nowrap
+  "
+  type="button"
+>
+  BOOK A CALL
+</button>
     </div>
 
   </div>
