@@ -8,7 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 const NavbarSection = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-    const [isHamBurgerOpen,setIsHamBurgerOpen]=useState(false)
+    const [isHamBurgerOpen, setIsHamBurgerOpen] = useState(false)
     return (
         <header
             className={`navbar ${isServicesOpen || isHamBurgerOpen ? 'no-border' : ''}`}
@@ -26,112 +26,96 @@ const NavbarSection = () => {
             <nav className="navbar__nav">
                 <ul className="navbar__menu">
                     <li
-                        className="navbar__item" id="services"
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                    >
-                        <a href="/" className="navbar__link">
-                            Services{' '}
-                            {isServicesOpen ? (
-                                <RiArrowDropUpLine size={24} />
-                            ) : (
-                                <RiArrowDropDownLine size={24} />
-                            )}
-                        </a>
-                    </li>
+  className="navbar__item navbar__dropdown-wrapper"
+  id="services"
+  onMouseEnter={() => setIsServicesOpen(true)}
+  onMouseLeave={() => setIsServicesOpen(false)}
+  style={{ position: "relative" }}
+>
+    <a href="/" className="navbar__link">
+        Services{' '}
+        {isServicesOpen ? (
+            <RiArrowDropUpLine size={20} />
+        ) : (
+            <RiArrowDropDownLine size={20} />
+        )}
+    </a>
+    {isServicesOpen && (
+      <div
+        className="services__dropdown"
+        onMouseEnter={() => {
+          setIsServicesOpen(true);
+          setIsResourcesOpen(false);
+        }}
+        onMouseLeave={() => setIsServicesOpen(false)}
+      >
+        <div className="services__dropdown__columns">
+            <h4>Design</h4>
+            <div className="dropdown__column__design">
+                <div className="first">
+                    {['UI/UX design', 'Product audit', 'Branding', 'Rebranding'].map((text) => (
+                        <div className="dropdown__column__row" key={text}>
+                            <span>{text}</span>
+                            <RiArrowDropRightLine className="hover-arrow" size={24} />
+                        </div>
+                    ))}
+                </div>
+                <div className="first">
+                    {['Web design', 'Landing page design', 'Mobile app design', 'Pitch deck design'].map((text) => (
+                        <div className="dropdown__column__row" key={text}>
+                            <div>{text}</div>
+                            <RiArrowDropRightLine className="hover-arrow" size={24} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+        <div className="services__dropdown__columns">
+            <h4>Development</h4>
+            <div className="dropdown__column__development">
+                <div className="first">
+                    {['Web development', 'Webflow development', 'MVP development', 'CMS development'].map((text) => (
+                        <div className="dropdown__column__row" key={text}>
+                            <span>{text}</span>
+                            <RiArrowDropRightLine className="hover-arrow" size={24} />
+                        </div>
+                    ))}
+                </div>
+                <div className="first">
+                    {['Software development', 'Mobile app development', 'Chatbot development', 'Cloud app development'].map((text) => (
+                        <div className="dropdown__column__row" key={text}>
+                            <span>{text}</span>
+                            <RiArrowDropRightLine className="hover-arrow" size={24} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+      </div>
+    )}
+</li>
 
                     <li><a href="/">Projects</a></li>
                     <li><a href="/">Dedicated Team</a></li>
 
-                    <div
-                        className="navbar__dropdown-wrapper"
+                    <li
+                        className="navbar__item navbar__dropdown-wrapper"
                         onMouseEnter={() => {
                             setIsResourcesOpen(true);
                             setIsServicesOpen(false);
                         }}
                         onMouseLeave={() => setIsResourcesOpen(false)}
+                        style={{ position: "relative" }}
                     >
-                        <li className="navbar__item">
-                            <a href="/" className="navbar__link">
-                                Resources{' '}
-                                {isResourcesOpen ? (
-                                    <RiArrowDropUpLine size={24} />
-                                ) : (
-                                    <RiArrowDropDownLine size={24} />
-                                )}
-                            </a>
-                        </li>
-                    </div>
-
-                    <li><a href="/">Pricing</a></li>
-                </ul>
-            </nav>
-
-            <div className="navbar__right">
-                <button className="navbar__contact">Contact Us</button>
-            </div>
-
-            <div className="navbar__hamburger" onClick={()=>setIsHamBurgerOpen(!isHamBurgerOpen)}>
-                {!isHamBurgerOpen?
-                <RxHamburgerMenu size={24} />:<RxCross2 />
-                }
-            </div>
-
-            {isServicesOpen && (
-                <div
-                    className="services__dropdown"
-                    onMouseEnter={() => {
-                        setIsServicesOpen(true);
-                        setIsResourcesOpen(false);
-                    }}
-                    onMouseLeave={() => setIsServicesOpen(false)}
-                >
-                    <div className="services__dropdown__columns">
-                        <h4>Design</h4>
-                        <div className="dropdown__column__design">
-                            <div className="first">
-                                {['UI/UX design', 'Product audit', 'Branding', 'Rebranding'].map((text) => (
-                                    <div className="dropdown__column__row" key={text}>
-                                        <span>{text}</span>
-                                        <RiArrowDropRightLine className="hover-arrow" size={24} />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="first">
-                                {['Web design', 'Landing page design', 'Mobile app design', 'Pitch deck design'].map((text) => (
-                                    <div className="dropdown__column__row" key={text}>
-                                        <div>{text}</div>
-                                        <RiArrowDropRightLine className="hover-arrow" size={24} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="services__dropdown__columns">
-                        <h4>Development</h4>
-                        <div className="dropdown__column__development">
-                            <div className="first">
-                                {['Web development', 'Webflow development', 'MVP development', 'CMS development'].map((text) => (
-                                    <div className="dropdown__column__row" key={text}>
-                                        <span>{text}</span>
-                                        <RiArrowDropRightLine className="hover-arrow" size={24} />
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="first">
-                                {['Software development', 'Mobile app development', 'Chatbot development', 'Cloud app development'].map((text) => (
-                                    <div className="dropdown__column__row" key={text}>
-                                        <span>{text}</span>
-                                        <RiArrowDropRightLine className="hover-arrow" size={24} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {isResourcesOpen && (
+                        <a href="/" className="navbar__link">
+                            Resources{' '}
+                            {isResourcesOpen ? (
+                                <RiArrowDropUpLine size={20} />
+                            ) : (
+                                <RiArrowDropDownLine size={20} />
+                            )}
+                        </a>
+                        {isResourcesOpen && (
                             <div className="resources__dropdown">
                                 <div className="resources__dropdown__columns">
                                     <div className="resources__column">
@@ -147,9 +131,25 @@ const NavbarSection = () => {
                                 </div>
                             </div>
                         )}
+                    </li>
 
+                    <li><a href="/">Pricing</a></li>
+                </ul>
+            </nav>
+
+            <div className="navbar__right">
+                <button className="navbar__contact">Contact Us</button>
+            </div>
+
+            <div className="navbar__hamburger" onClick={() => setIsHamBurgerOpen(!isHamBurgerOpen)}>
+                {!isHamBurgerOpen ?
+                    <RxHamburgerMenu size={24} /> : <RxCross2 />
+                }
+            </div>
+
+            
             {
-                isHamBurgerOpen && <Menu setIsHamBurgerOpen={setIsHamBurgerOpen} setIsServicesOpen={setIsServicesOpen}/>
+                isHamBurgerOpen && <Menu setIsHamBurgerOpen={setIsHamBurgerOpen} setIsServicesOpen={setIsServicesOpen} />
             }
         </header>
     );

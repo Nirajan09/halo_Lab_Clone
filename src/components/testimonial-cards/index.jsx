@@ -91,7 +91,7 @@ export default function TestimonialCard() {
       </h1>
 
       <div className=" bg-white p-8 w-full rounded-3xl shadow-lg">
-        <div className="bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row  w-full p-2 md:p-8 md:p-0 transition-all duration-700 ease-in-out ">
+        <div className="bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row  w-full p-2 md:p-8 transition-all duration-700 ease-in-out ">
           {/* Left side: Text content */}
           <div className="flex-1 p-4 flex flex-col justify-center ">
             <span className="text-sm text-black font-normal mb-2 md:mb-4 flex items-center gap-1 uppercase ">
