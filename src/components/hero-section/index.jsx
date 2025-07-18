@@ -2,7 +2,8 @@ const HeroSection = () => {
   return (
     <div className="mt-[3rem] grid grid-cols-1 md:grid-cols-2 md:h-[82vh] h-[150vh] gap-6">
       {/* Left Section: Headline and CTA */}
-      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white transition-shadow duration-200 shadow-md">
+      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white 
+    transition duration-200 shadow-sm group hover:scale-[1.024] hover:shadow-xl hover:bg-[#463af7]">
         <h1 className="text-center text-5xl md:text-3xl xl:text-5xl font-normal leading-12 xs:leading-15 sm:leading-20">
           DESIGN & TECH<br />
           AGENCY HELPING<br />
@@ -14,14 +15,16 @@ const HeroSection = () => {
             <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67bdb3b2f4c3ff24144f7bc0_home-hero-fire.avif" loading="lazy" alt="" className="w-12 h-12 object-contain" />
             <p className="text-xl">12 years of design-driven development for B2B products</p>
           </span>
-          <button className="flex bg-[#ffd23f] text-black rounded-full px-6 py-2 mx-auto hover:bg-yellow-300 transition mt-2">
+          <button className="flex bg-[#ffd23f] text-black rounded-full px-6 py-2 mx-auto mt-2
+  transition duration-200 ease-in-out
+  hover:bg-yellow-300 hover:scale-105 hover:shadow-lg cursor-pointer">
             BOOK A CALL
           </button>
         </div>
       </div>
 
       {/* Right Section: Video */}
-      <div className="flex items-center bg-[#ffd23f] rounded-3xl w-full text-white p-6">
+      <div className="flex items-center bg-[#ffd23f] rounded-3xl w-full text-white p-6 transition duration-200 shadow-sm group hover:scale-[1.024] hover:shadow-xl hover:bg-[#c5b16f]">
         <div className="relative rounded-full mx-auto bg-[#f5f3f0] flex items-center justify-center shadow-lg w-full h-full aspect-square max-w-[500px] max-h-[500px]">
           <video
             className="w-full h-full object-cover rounded-xl"
