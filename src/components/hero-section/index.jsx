@@ -2,7 +2,7 @@ const HeroSection = () => {
   return (
     <div className="mt-[3rem] grid grid-cols-1 md:grid-cols-2 md:h-[82vh] h-[150vh] gap-6">
       {/* Left Section: Headline and CTA */}
-      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white">
+      <div className="flex flex-col justify-between bg-[#3827C8] rounded-3xl p-10 xl:p-16 w-full text-white transition-shadow duration-200 shadow-md">
         <h1 className="text-center text-5xl md:text-3xl xl:text-5xl font-normal leading-12 xs:leading-15 sm:leading-20">
           DESIGN & TECH<br />
           AGENCY HELPING<br />

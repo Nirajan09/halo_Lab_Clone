@@ -103,7 +103,7 @@
 
 .services__dropdown {
   position: absolute;
-  top: 200%;
+  top: 230%;
   left: 18vw;
   transform: translateX(-50%);
   width: max-content;
@@ -197,7 +197,7 @@
 
 .resources__dropdown {
   position: absolute;
-  top: 200%;
+  top: 230%;
   left: 62%;
   width: 18vw;
   display: flex;
