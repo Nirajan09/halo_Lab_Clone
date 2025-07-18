@@ -13,26 +13,25 @@ const TrustedCompaniesSection = () => {
       <p className="absolute left-[25%] top-[-0.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center mb-8 z-10 sm:text-size-xs lg:text-size-base xl:text-size-lg">
         Trusted by global brands &amp; SMBs in the US and Europe
       </p>
-      <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+      <Suspense fallback={
+        <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
+          {[...Array(6)].map((_, i) =>
+            <div
+              key={i}
+              style={{ height: '48px', width: '100px', background: '#eee', borderRadius: '8px' }}
+            />
+          )}
+        </div>
+      }>
+        <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
           <NokiaLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
           <BumbleLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
           <SchibstedLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
           <OperaLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
           <BonterraLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
           <ZoomLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </div>
   );
 };
