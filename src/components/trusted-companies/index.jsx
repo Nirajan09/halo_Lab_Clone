@@ -1,39 +1,40 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react';
+
+const NokiaLogo = lazy(() => import('../lazyloading-utils/trusted-companies/NokiaLogo'));
+const BumbleLogo = lazy(() => import('../lazyloading-utils/trusted-companies/BumbleLogo'));
+const SchibstedLogo = lazy(() => import('../lazyloading-utils/trusted-companies/SchibstedLogo'));
+const OperaLogo = lazy(() => import('../lazyloading-utils/trusted-companies/OperaLogo'));
+const BonterraLogo = lazy(() => import('../lazyloading-utils/trusted-companies/BonterraLogo'));
+const ZoomLogo = lazy(() => import('../lazyloading-utils/trusted-companies/ZoomLogo'));
 
 const TrustedCompaniesSection = () => {
-    return (
-        <div className="section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white ">
-            <p className="absolute left-[25%] top-[-.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center mb-8 z-10 sm:text-size-xs lg:text-size-base xl:text-size-lg">
-                Trusted by global brands &amp; SMBs in the US and Europe
-            </p>
-            <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
-                <div>
-                    <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65c4cdd76ec1f96fd1e9ff8b_logo-nokia.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-                <div>
-                    <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67c186489234871b0050d8d1_logo-bumble.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-                <div>
-                    <img loading="lazy" src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67c18648d1201ba13fea32fe_logo-schibsted.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-                <div>
-                    <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65c4cdd71a615f6f78fabaf4_logo-opera.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-                <div>
-                    <img loading="lazy" src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67c18648d559059598d91f6b_logo-bonterra.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-                <div>
-                    <img src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67c18648f7fac6ef7ff45ea9_logo-zoom.svg" className='className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain
-                    "' alt="" />
-                </div>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white">
+      <p className="absolute left-[25%] top-[-0.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center mb-8 z-10 sm:text-size-xs lg:text-size-base xl:text-size-lg">
+        Trusted by global brands &amp; SMBs in the US and Europe
+      </p>
+      <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <NokiaLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <BumbleLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <SchibstedLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <OperaLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <BonterraLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+        <Suspense fallback={<div style={{ height: '48px', width: '100px' }} />}>
+          <ZoomLogo className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain" />
+        </Suspense>
+      </div>
+    </div>
+  );
+};
 
-export default TrustedCompaniesSection
+export default TrustedCompaniesSection;
