@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import LazyImage from "../lazyloading-utils/blog-cards/index";
 
 const cards = [
   {
@@ -49,14 +50,13 @@ const BlogCards = () => {
             onMouseLeave={handleCardMouseLeave}
           >
             <div className="absolute left-1/2 -translate-x-1/2 top-8 transition-transform duration-600">
-              <img
+              <LazyImage
                 src={
                   delayedIdx === idx
                     ? card.imageAfterAnimate
                     : card.imageBeforeAnimate
                 }
                 alt=""
-                draggable={false}
               />
             </div>
             <div className="mt-32">

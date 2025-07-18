@@ -1,21 +1,23 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
+
+const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar")); // adjust path
 
 const awards = [
   {
     subtitle: "4.9 AVG. SCORE BASED ON 80+ REVIEWS",
-    image:"https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66e0344627580704633cecfb_award-color-clutch.svg"
+    image: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66e0344627580704633cecfb_award-color-clutch.svg"
   },
   {
     subtitle: "TOP RATED COMPANY WITH 100% JOB SUCCESS",
-    image:"https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66d9d649ca478502f2b11fc1_award-color-upwork.svg"
+    image: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66d9d649ca478502f2b11fc1_award-color-upwork.svg"
   },
   {
     subtitle: "FEATURED WEB DESIGN AGENCY IN UAE",
-    image:"https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66d9d649c65781f52fc3f9ff_award-color-sortlist.svg"
+    image: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66d9d649c65781f52fc3f9ff_award-color-sortlist.svg"
   },
   {
     subtitle: "TOP DESIGN AGENCY WORLDWIDE",
-    image:"https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66e41801230bc5baa05c898b_award-color-dribbble.svg"
+    image: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/66e41801230bc5baa05c898b_award-color-dribbble.svg"
   },
 ];
 
@@ -29,15 +31,21 @@ const ProjectDiscussionSection = () => (
       <p className="text-[#15122E] opacity-80 text-base md:text-xl text-center mb-8 max-w-2xl">
         Let's talk about how we can craft a user experience that not <br /> only looks great but drives real growth for your product.
       </p>
-      <button className="bg-[#3813c2] text-white rounded-full px-8 py-3 flex items-center font-normal text-base hover:bg-[#2f0ba5] transition">
+      <button
+        className="cursor-pointer bg-[#3813c2] text-white rounded-full px-8 py-3 flex items-centerfont-normal text-base transition-all duration-200 hover:bg-[#2f0ba5] hover:scale-105 hover:shadow-lg focus:outline-none
+  "
+      >
         BOOK A CALL
       </button>
+
     </div>
     {/* Awards Grid */}
     <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 text-center mb-4">
       {awards.map((award, idx) => (
         <div key={idx} className="flex flex-col items-center gap-4">
-          <img src={award.image} alt="" loading="lazy"/>
+          <Suspense fallback={<div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse"></div>}>
+            <LazyAvatar src={award.image} alt={award.subtitle} className="" />
+          </Suspense>
           <div className="text-white text-xs md:text-sm opacity-70 uppercase tracking-tight">{award.subtitle}</div>
         </div>
       ))}
