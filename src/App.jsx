@@ -13,30 +13,27 @@ import ProjectDiscussionSection from './components/project-discussion-section'
 import ContactSection from './components/contact-section'
 import FooterSection from './components/footer-section'
 import TestimonialCard from './components/testimonial-cards'
+import ScrollFadeIn from './components/animate-utils/ScrollFadeIn'
 
 function App() {
-
-
   return (
-    <>
-      <div className='my-container'>
-        <NavbarSection />
-        <HeroSection />
-        <TrustedCompaniesSection />
-        <FounderSection />
-        <AchievementsSection />
-        <HeroServicesSection />
-        <TestimonialBannerSection />
-        <TestimonialCard/>
-        <StatCards />
-        <BlogSection />
-        <BlogCards />
-        <ProjectDiscussionSection />
-        <ContactSection />
-        <FooterSection />
-      </div>
-    </>
-  )
+    <div className='my-container'>
+      <NavbarSection />
+      <ScrollFadeIn><HeroSection /></ScrollFadeIn>
+      <ScrollFadeIn ><TrustedCompaniesSection /></ScrollFadeIn>
+      <ScrollFadeIn ><FounderSection /></ScrollFadeIn>
+      <ScrollFadeIn ><AchievementsSection /></ScrollFadeIn>
+      <ScrollFadeIn ><HeroServicesSection /></ScrollFadeIn>
+      <ScrollFadeIn ><TestimonialBannerSection /></ScrollFadeIn>
+      <ScrollFadeIn ><TestimonialCard/></ScrollFadeIn>
+      <ScrollFadeIn ><StatCards /></ScrollFadeIn>
+      <ScrollFadeIn ><BlogSection /></ScrollFadeIn>
+      <ScrollFadeIn ><BlogCards /></ScrollFadeIn>
+      <ScrollFadeIn ><ProjectDiscussionSection /></ScrollFadeIn>
+      <ScrollFadeIn ><ContactSection /></ScrollFadeIn>
+      <ScrollFadeIn ><FooterSection /></ScrollFadeIn>
+    </div>
+  );
 }
 
 export default App

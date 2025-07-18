@@ -1,9 +1,9 @@
-const LazyAvatar = ({ src, alt, ...props }) => (
+const LazyAvatar = ({ src, alt, className = "", ...props }) => (
   <img
     src={src}
     alt={alt}
     loading="lazy"
-    className="w-10 h-10 rounded-full object-cover border-2 border-[#322570]"
+    className={className}
     {...props}
   />
 );

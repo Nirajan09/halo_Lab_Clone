@@ -1,7 +1,9 @@
 // TestimonialCard.jsx
-import { useEffect, useState } from "react";
-import { FaLessThan } from "react-icons/fa6";
-import { FaGreaterThan } from "react-icons/fa6";
+import { useEffect, useState, lazy, Suspense } from "react";
+import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
+
+// Lazy-load image wrapper for all images in the card
+const LazyAvatar = lazy(() => import("../lazyloading-utils/testimonial-banner/LazyAvatar"));
 
 export default function TestimonialCard() {
   const cards = [
@@ -71,91 +73,114 @@ export default function TestimonialCard() {
       authorDescription: "CTO, nyra health",
       workImage: "./testimonials/works/678a885d60016fcf4a0ee5b5_results-NyraHealth.avif"
     },
-  ]
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
-    }, 5000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [cards.length]);
 
   const card = cards[currentIndex];
+
   return (
-    <div className="section flex flex-col items-center" >
+    <div className="section flex flex-col items-center">
       <h1 className="text-4xl md:text-6xl font-semibold text-white text-center mb-10">
         WHERE GREAT IDEAS <br />
         <span className="text-[#FDC54B]">BECAME REAL RESULTS</span>
       </h1>
 
-      <div className=" bg-white p-8 w-full rounded-3xl shadow-lg">
-        <div className="bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row  w-full p-2 md:p-8 transition-all duration-700 ease-in-out ">
-          {/* Left side: Text content */}
-          <div className="flex-1 p-4 flex flex-col justify-center ">
-            <span className="text-sm text-black font-normal mb-2 md:mb-4 flex items-center gap-1 uppercase ">
-              <span className="mt-1 ">{card.tag}</span>
-              <img
-                src={card.flagImageSrc}
-                alt={card.flagAlt}
-                className="w-6 h-6 rounded-full ml-2 object-cover"
-                loading="lazy"
-              />
+      <div className="bg-white p-8 w-full rounded-3xl shadow-lg group">
+  <div className="relative bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row w-full p-2 md:p-8 transition-all duration-700 ease-in-out">
+    {/* Left arrow */}
+    <button
+      className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow 
+        opacity-0 pointer-events-none 
+        group-hover:opacity-100 group-hover:pointer-events-auto 
+        group-focus-within:opacity-100 group-focus-within:pointer-events-auto
+        hover:bg-[#F5F5F7] hover:scale-110 transition cursor-pointer"
+      onClick={() => setCurrentIndex((currentIndex - 1 + cards.length) % cards.length)}
+      aria-label="previous testimonial"
+      type="button"
+    >
+      <FaLessThan />
+    </button>
+
+          {/* Text content */}
+          <div className="flex-1 p-4 flex flex-col justify-center">
+            <span className="text-sm text-black font-normal mb-2 md:mb-4 flex items-center gap-1 uppercase">
+              <span className="mt-1">{card.tag}</span>
+              <Suspense fallback={<div className="w-6 h-6 bg-gray-200 rounded-full animate-pulse ml-2" />}>
+                <LazyAvatar
+                  src={card.flagImageSrc}
+                  alt={`${card.tag} flag`}
+                  className="w-6 h-6 rounded-full ml-2 object-cover"
+                />
+              </Suspense>
             </span>
-            <h3 className="text-black text-xl sm:text-2xl font-medium w-full md:max-w-[20ch] min-h-[10vh] md:min-h-[20vh]">{card.works}</h3>
+            <h3 className="text-black text-xl sm:text-2xl font-medium w-full md:max-w-[20ch] min-h-[10vh] md:min-h-[20vh]">
+              {card.works}
+            </h3>
             <div className="flex items-center mb-3">
               {[...Array(5)].map((_, i) => (
-                <img
-                  src={card.starIcon}
-                  alt="Rating Star"
-                  className="object-cover"
-                  loading="lazy"
-                />
+                <Suspense key={i} fallback={<div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />}>
+                  <LazyAvatar
+                    src={card.starIcon}
+                    alt="Rating Star"
+                    className="w-5 h-5 object-cover"
+                  />
+                </Suspense>
               ))}
             </div>
-            <p className="text-[#4A4A5E] text-lg font-medium mb-4 h-[14vh] md:min-h-[22vh] w-full md:max-w-[32ch]">“{card.text}”</p>
+            <p className="text-[#4A4A5E] text-lg font-medium mb-4 h-[14vh] md:min-h-[22vh] w-full md:max-w-[32ch]">
+              “{card.text}”
+            </p>
             <div className="flex items-center gap-3 mt-2">
-              <img
-                src={card.authorImage}
-                alt={card.authorName}
-                className="w-9 h-9 rounded-full border-2 border-yellow-400 object-cover"
-                loading="lazy"
-              />
+              <Suspense fallback={<div className="w-9 h-9 rounded-full bg-gray-200 animate-pulse" />}>
+                <LazyAvatar
+                  src={card.authorImage}
+                  alt={card.authorName}
+                  className="w-9 h-9 rounded-full border-2 border-yellow-400 object-cover"
+                />
+              </Suspense>
               <div>
-                <div className="text-sm font-medium text-black">{card.authorName}</div>
+                <div className="text-sm font-medium text-black">
+                  {card.authorName}
+                </div>
                 <div className="text-xs text-gray-500">{card.authorDescription}</div>
               </div>
             </div>
           </div>
 
-          {/* Right side: Work image */}
-          <div className="flex-1 ]">
-            <img
-              src={card.workImage}
-              alt={`${card.tag} work`}
-              className="rounded-xl shadow-lg w-full h-full object-cover"
-              loading="lazy"
-            />
+          {/* Work image */}
+          <div className="flex-1 flex items-center justify-center">
+            <Suspense fallback={<div className="w-full h-56 bg-gray-200 rounded-xl animate-pulse" />}>
+              <LazyAvatar
+                src={card.workImage}
+                alt={`${card.tag} work`}
+                className="rounded-xl shadow-lg w-full h-full object-cover"
+              />
+            </Suspense>
           </div>
+
+          {/* Right arrow */}
+          <button
+      className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow 
+        opacity-0 pointer-events-none 
+        group-hover:opacity-100 group-hover:pointer-events-auto
+        group-focus-within:opacity-100 group-focus-within:pointer-events-auto
+        hover:bg-[#F5F5F7] hover:scale-110 transition cursor-pointer"
+      onClick={() => setCurrentIndex((currentIndex + 1) % cards.length)}
+      aria-label="next testimonial"
+      type="button"
+    >
+      <FaGreaterThan />
+    </button>
         </div>
       </div>
-
-      <div className="flex gap-4 mt-4 justify-end w-full">
-        <div
-          className="rounded-full p-4 cursor-pointer bg-white"
-          onClick={() => setCurrentIndex((currentIndex - 1 + cards.length) % cards.length)}
-        >
-          <FaLessThan />
-        </div>
-        <div
-          className="rounded-full p-4 cursor-pointer bg-white"
-          onClick={() => setCurrentIndex((currentIndex + 1) % cards.length)}
-        >
-          <FaGreaterThan />
-        </div>
-      </div>
-
     </div>
   );
 }
