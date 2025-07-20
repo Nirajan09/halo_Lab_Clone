@@ -1,25 +1,28 @@
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 
-export default function ScrollFadeIn({ children, delay = 0.16, y = 48, className = "" }) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.14 });
+export default function ScrollFadeInSection({ children }) {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef();
 
   useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1, y: 0, transition: { duration: 0.6, delay } });
-    }
-  }, [controls, inView, delay]);
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target); // Triggers only once
+        }
+      });
+    });
+    observer.observe(domRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y }}
-      animate={controls}
-      className={className}
+    <div
+      ref={domRef}
+      className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
