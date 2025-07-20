@@ -43,7 +43,7 @@ const NavbarSection = () => {
         <ul className="flex list-none gap-2 p-0 m-0 flex-wrap">
           {/* SERVICES */}
           <li
-            className="relative flex items-center uppercase text-[13px]"
+            className="relative flex items-center uppercase text-[13px] "
             onMouseEnter={() => setIsServicesOpen(true)}
             onMouseLeave={() => setIsServicesOpen(false)}
             id="services"
@@ -59,7 +59,7 @@ const NavbarSection = () => {
             {/* SERVICES DROPDOWN */}
             {isServicesOpen && (
               <div
-                className="absolute top-[150%] left-[260%] -translate-x-1/2 w-[80vw] flex bg-white text-black p-8 rounded-2xl shadow-2xl justify-center z-50"
+                className="absolute top-[81%] left-[18vw] -translate-x-1/2 mt-2 w-[1100px] max-w-[95vw] flex bg-white text-black p-8 rounded-2xl shadow-2xl justify-center z-50"
                 onMouseEnter={() => {
                   setIsServicesOpen(true);
                   setIsResourcesOpen(false);
@@ -135,7 +135,7 @@ const NavbarSection = () => {
             </a>
             {isResourcesOpen && (
               <div
-                className="absolute top-[140%] left-2/3 -translate-x-1/2 w-[20vw] min-w-[220px] flex bg-white text-black p-8 rounded-2xl shadow-2xl z-50"
+                className="absolute top-[81%] left-[6vw] -translate-x-1/2 w-[20vw] min-w-[220px] flex bg-white text-black p-8 rounded-2xl shadow-2xl z-50"
                 onMouseEnter={() => setIsResourcesOpen(true)}
                 onMouseLeave={() => setIsResourcesOpen(false)}
               >
@@ -164,7 +164,7 @@ const NavbarSection = () => {
       {/* Contact Button */}
       <div className="block">
         <button
-          className="bg-white text-black px-6 py-2 rounded-full font-bold cursor-pointer transition-all text-base hover:bg-[#FDC448] hover:text-[#0a0826] hover:shadow-lg hover:scale-105"
+          className="bg-white text-black px-3 py-1 rounded-full font-bold cursor-pointer transition-all text-base hover:bg-[#FDC448] hover:text-[#0a0826] hover:shadow-lg hover:scale-105"
         >
           Contact Us
         </button>
