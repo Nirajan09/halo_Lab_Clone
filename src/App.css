@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.section {
+  margin-top: 7rem;
+}
+
 .my-container {
   width: 100%;
   margin-left: auto;
@@ -11,58 +15,36 @@ html {
   box-sizing: border-box;
 }
 
-.section {
-  margin-top: 7rem;
-}
-
 /* xs */
 @media (min-width: 475px) {
-  .my-container {
-    max-width: 475px;
-  }
+  .my-container { max-width: 430px; }
 }
 
 /* sm */
 @media (min-width: 640px) {
-  .my-container {
-    max-width: 640px;
-  }
+  .my-container { max-width: 590px; }
 }
 
 /* md */
 @media (min-width: 768px) {
-  .my-container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .my-container {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
+  .my-container { max-width: 720px; }
 }
 
 /* lg */
 @media (min-width: 1024px) {
-  .my-container {
-    max-width: 1024px;
-  }
+  .my-container { max-width: 960px; }
 }
 
 /* xl */
 @media (min-width: 1280px) {
-  .my-container {
-    max-width: 1280px;
-  }
+  .my-container { max-width: 1200px; }
 }
 
 /* 2xl */
 @media (min-width: 1536px) {
-  .my-container {
-    max-width: 1536px;
-  }
+  .my-container { max-width: 1460px; }
 }
+
 
 .scrollbar-hide {
   scrollbar-width: none;
