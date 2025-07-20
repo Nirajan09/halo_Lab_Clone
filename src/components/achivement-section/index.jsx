@@ -51,11 +51,11 @@ const AchievementsSection = () => (
           className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md"
         >
           <Suspense fallback={
-            <div className="bg-gray-700 rounded-full w-20 h-20 mb-4 animate-pulse" />
+            <div className="bg-gray-700 rounded-full w-20 h-20 animate-pulse" />
           }>
-            <item.Img className="w-20 h-20 mb-4 object-contain" />
+            <item.Img className="w-20 h-20 object-contain" />
           </Suspense>
-          <span className="text-white text-base md:text-lg font-semibold px-4">
+          <span className="text-white text-sm sm:text-base lg:text-lg font-semibold px-4 mb-4">
             {item.title}
           </span>
         </div>
