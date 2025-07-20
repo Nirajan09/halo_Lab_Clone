@@ -1,12 +1,10 @@
 import React from 'react';
 
-// Individual skeleton logo
 const LogoSkeleton = () => (
   <div
     className="flex items-center justify-center rounded-lg animate-pulse"
-    style={{ height: '48px', width: '100px', background: '#e5e7eb' }} // Tailwind's gray-200
+    style={{ height: '48px', width: '100px', background: '#e5e7eb' }} 
   >
-    {/* Optional: A fake logo shape */}
     <div
       className="rounded h-6 w-20 bg-gray-300"
       style={{ background: '#d1d5db' }}
