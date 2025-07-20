@@ -14,18 +14,31 @@ import ContactSection from './components/contact-section'
 import FooterSection from './components/footer-section'
 import TestimonialCard from './components/testimonial-cards'
 import ScrollFadeIn from './components/animate-utils/ScrollFadeIn'
+import { useEffect, useState } from 'react'
+import ScrollFadeInSection from './components/animate-utils/ScrollFadeIn'
+import HeroSectionSkeleton from './components/hero-section/HeroSectionSkeleton'
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200); // 1.2s loading
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className='my-container'>
       <NavbarSection />
-      <ScrollFadeIn><HeroSection /></ScrollFadeIn>
+      
+      {loading && <HeroSectionSkeleton />}
+      <ScrollFadeInSection onVisible={() => setLoading(false)}>
+        <HeroSection />
+      
+      </ScrollFadeInSection>
       <ScrollFadeIn ><TrustedCompaniesSection /></ScrollFadeIn>
       <ScrollFadeIn ><FounderSection /></ScrollFadeIn>
       <ScrollFadeIn ><AchievementsSection /></ScrollFadeIn>
       <ScrollFadeIn ><HeroServicesSection /></ScrollFadeIn>
       <ScrollFadeIn ><TestimonialBannerSection /></ScrollFadeIn>
-      <ScrollFadeIn ><TestimonialCard/></ScrollFadeIn>
+      <ScrollFadeIn ><TestimonialCard /></ScrollFadeIn>
       <ScrollFadeIn ><StatCards /></ScrollFadeIn>
       <ScrollFadeIn ><BlogSection /></ScrollFadeIn>
       <ScrollFadeIn ><BlogCards /></ScrollFadeIn>

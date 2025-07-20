@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-
-export default function ScrollFadeInSection({ children }) {
+export default function ScrollFadeInSection({ children, onVisible }) {
   const [isVisible, setVisible] = useState(false);
   const domRef = useRef();
 
@@ -9,13 +8,14 @@ export default function ScrollFadeInSection({ children }) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.unobserve(entry.target); // Triggers only once
+          observer.unobserve(entry.target);
+          if (onVisible) onVisible(); // Notify parent!
         }
       });
     });
     observer.observe(domRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [onVisible]);
 
   return (
     <div
