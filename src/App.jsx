@@ -38,65 +38,90 @@ function SectionWithSkeleton({ loading, Skeleton, children, ...fadeProps }) {
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200); // 1.2s loading
+    const timer = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
+
+  const sections = [
+  {
+    key: 'hero',
+    component: <HeroSection />,
+    skeleton: HeroSectionSkeleton,
+  },
+  {
+    key: 'trusted-companies',
+    component: <TrustedCompaniesSection />,
+    skeleton: TrustedCompaniesSkeleton,
+  },
+  {
+    key: 'founder',
+    component: <FounderSection />,
+    skeleton: FounderSectionSkeleton,
+  },
+  {
+    key: 'achievements',
+    component: <AchievementsSection />,
+    skeleton: AchievementsSectionSkeleton,
+  },
+  {
+    key: 'services',
+    component: <HeroServicesSection />,
+    skeleton: HeroServicesSectionSkeleton,
+  },
+  {
+    key: 'testimonial-banner',
+    component: <TestimonialBannerSection />,
+    skeleton: TestimonialBannerSectionSkeleton,
+  },
+  {
+    key: 'testimonial-card',
+    component: <TestimonialCard />,
+    skeleton: TestimonialCardSkeleton,
+  },
+  {
+    key: 'stats',
+    component: <StatCards />,
+    skeleton: StatCardsSkeleton,
+  },
+  {
+    key: 'blog-section',
+    component: <BlogSection />,
+    skeleton: BlogSectionSkeleton,
+  },
+  {
+    key: 'blog-cards',
+    component: <BlogCards />,
+    skeleton: BlogCardsSkeleton,
+  },
+  {
+    key: 'project-discussion',
+    component: <ProjectDiscussionSection />,
+    skeleton: ProjectDiscussionSectionSkeleton,
+  },
+  {
+    key: 'contact',
+    component: <ContactSection />,
+    skeleton: ContactSectionSkeleton,
+  },
+  {
+    key: 'footer',
+    component: <FooterSection />,
+    skeleton: FooterSectionSkeleton,
+  },
+];
 
   return (
     <div className='my-container'>
       <NavbarSection />
-
-      <SectionWithSkeleton loading={loading} Skeleton={HeroSectionSkeleton}>
-        <HeroSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={TrustedCompaniesSkeleton}>
-        <TrustedCompaniesSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={FounderSectionSkeleton}>
-        <FounderSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={AchievementsSectionSkeleton}>
-        <AchievementsSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={HeroServicesSectionSkeleton}>
-        <HeroServicesSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={TestimonialBannerSectionSkeleton}>
-        <TestimonialBannerSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={TestimonialCardSkeleton}>
-        <TestimonialCard />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={StatCardsSkeleton}>
-        <StatCards />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={BlogSectionSkeleton}>
-        <BlogSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={BlogCardsSkeleton}>
-        <BlogCards />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={ProjectDiscussionSectionSkeleton}>
-        <ProjectDiscussionSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={ContactSectionSkeleton}>
-        <ContactSection />
-      </SectionWithSkeleton>
-
-      <SectionWithSkeleton loading={loading} Skeleton={FooterSectionSkeleton}>
-        <FooterSection />
-      </SectionWithSkeleton>
+      {sections.map(({ key, component, skeleton }) => (
+        <SectionWithSkeleton
+          key={key}
+          loading={loading}
+          Skeleton={skeleton}
+        >
+          {component}
+        </SectionWithSkeleton>
+      ))}
     </div>
   );
 }
