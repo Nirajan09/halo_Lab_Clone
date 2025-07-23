@@ -1,4 +1,3 @@
-import React from "react";
 
 const CircleSkeleton = ({ size = 24, className = "" }) => (
   <div

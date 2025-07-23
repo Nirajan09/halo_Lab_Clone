@@ -13,7 +13,7 @@ const AvatarSkeleton = ({ className = "" }) => (
 // Desktop testimonial card skeleton
 const DesktopTestimonialCardSkeleton = () => (
   <div className="hidden lg:flex rounded-2xl w-[400px] flex-shrink-0 h-[60vh] flex-col shadow-lg lg:mr-20 xl:mr-40 relative overflow-hidden">
-    {/* Pink container background fills the entire card */}
+    {/*  container background fills the entire card */}
     <div className="absolute inset-0 w-full h-full bg-gray-500/60 rounded-2xl animate-pulse z-0" />
     <div className="relative z-10 flex flex-col h-full justify-between p-7">
       <div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import  { useState, useRef, useCallback } from "react";
 import LazyImage from "../lazyloading-utils/blog-cards/index";
 
 const cards = [

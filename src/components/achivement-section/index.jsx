@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, memo } from 'react';
+import  { lazy, Suspense, memo } from 'react';
 
 const DribbbleAward = lazy(() => import('../lazyloading-utils/achievement-section/DribbleAward'));
 const ClutchAward = lazy(() => import('../lazyloading-utils/achievement-section/ClutchAward'));

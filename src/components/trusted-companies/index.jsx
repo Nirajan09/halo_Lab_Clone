@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import  { Suspense, lazy } from 'react';
 
 const logos = [
   { Component: lazy(() => import('../lazyloading-utils/trusted-companies/NokiaLogo')), key: 'nokia' },

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import  { useRef, useEffect, useState } from 'react';
 
 export default function ScrollFadeInSection({ children, onVisible }) {
   const [isVisible, setVisible] = useState(false);

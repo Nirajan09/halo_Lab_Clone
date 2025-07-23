@@ -1,6 +1,4 @@
-import React from "react";
 
-// One skeleton card, matching your real card shape/sizes
 const BlogCardSkeleton = () => (
   <div
     className="

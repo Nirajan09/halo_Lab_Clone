@@ -1,4 +1,3 @@
-import React from "react";
 
 const AwardIconSkeleton = () => (
   <div className="w-16 h-16 bg-gray-300 rounded-full animate-pulse mx-auto" />

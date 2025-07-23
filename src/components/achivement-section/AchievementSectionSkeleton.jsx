@@ -1,4 +1,3 @@
-import React from "react";
 
 const AchievementCardSkeleton = () => (
   <div className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md">
