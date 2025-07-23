@@ -90,7 +90,7 @@ export default function TestimonialBannerSection() {
   const handleNext = () => setCurrent(prev => (prev === total - 1 ? 0 : prev + 1));
 
   return (
-    <section className="section">
+    <section className="section" aria-label="Testimonials and reviews">
       {/* Clutch badge and headline */}
       <div className="max-w-2xl mx-auto flex flex-col items-start sm:items-center">
         <div className="flex items-center justify-between gap-3 mb-5 border border-white rounded-3xl px-5 py-3">
@@ -191,7 +191,7 @@ export default function TestimonialBannerSection() {
           {repeatedReviews.map((review, idx) => (
             <div
               key={idx}
-              className="lg:hidden bg-[#3719CA] rounded-2xl p-7 w-[400px] flex-shrink-0 h-[40vh] sm:h-[60vh] flex flex-col shadow-lg"
+              className="lg:hidden bg-[#3719CA] rounded-2xl p-7 w-[400px] flex-shrink-0 h-[60vh] flex flex-col shadow-lg"
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-yellow-400 text-lg font-bold mt-1">{review.rating}</span>
