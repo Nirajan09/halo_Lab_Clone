@@ -38,7 +38,7 @@ const NavbarSection = () => {
 
   return (
     <header
-      className={`relative text-white flex justify-between items-center flex-wrap border-t border-b border-white w-full mt-6 z-[1000] py-4 ${isServicesOpen || isHamBurgerOpen ? "border-b-0" : ""
+      className={`relative text-white flex justify-between items-center flex-wrap border-t border-b border-white w-full mt-6 z-[1000] py-4 ${isServicesOpen || isHamBurgerOpen ||isResourcesOpen ? "border-b-0" : ""
         }`}
       onMouseLeave={closeDropdowns}
     >
