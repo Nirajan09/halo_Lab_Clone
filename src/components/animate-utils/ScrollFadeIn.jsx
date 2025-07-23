@@ -1,19 +1,25 @@
 import React, { useRef, useEffect, useState } from 'react';
+
 export default function ScrollFadeInSection({ children, onVisible }) {
   const [isVisible, setVisible] = useState(false);
-  const domRef = useRef();
+  const domRef = useRef(null);
 
   useEffect(() => {
-    const observer = new window.IntersectionObserver((entries) => {
+    const current = domRef.current;
+    if (!current) return;
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.unobserve(entry.target);
-          if (onVisible) onVisible(); // Notify parent!
+          observerInstance.unobserve(entry.target);
+          if (onVisible) onVisible();
         }
       });
     });
-    observer.observe(domRef.current);
+
+    observer.observe(current);
+
     return () => observer.disconnect();
   }, [onVisible]);
 

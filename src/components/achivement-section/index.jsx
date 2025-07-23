@@ -28,9 +28,7 @@ const achievements = [
   },
 ];
 
-const repeatedAchievements = Array(4)
-  .fill(achievements)
-  .flat();
+const repeatedAchievements = Array(4).fill(achievements).flat();
 
 const SCROLL_DURATION = 30; // seconds
 
