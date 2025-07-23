@@ -1,11 +1,9 @@
-// TestimonialCard.jsx
 import { useEffect, useState, lazy, Suspense } from "react";
 import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 
 // Lazy-load image wrapper for all images in the card
 const LazyAvatar = lazy(() => import("../lazyloading-utils/testimonial-banner/LazyAvatar"));
 
-export default function TestimonialCard() {
   const cards = [
     {
       tag: "marketplace",
@@ -75,31 +73,34 @@ export default function TestimonialCard() {
     },
   ];
 
+  export default function TestimonialCard() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Auto-advance testimonial every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % cards.length);
+      setCurrentIndex((prev) => (prev + 1) % cards.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [cards.length]);
+  }, []);
 
   const card = cards[currentIndex];
 
   return (
-    <div className="section flex flex-col items-center">
+    <section className="section flex flex-col items-center">
       <h1 className="text-4xl md:text-6xl font-semibold text-white text-center mb-10">
         WHERE GREAT IDEAS <br />
         <span className="text-[#FDC54B]">BECAME REAL RESULTS</span>
       </h1>
 
+
       <div className="bg-white p-8 w-full rounded-3xl shadow-lg group">
         <div className="relative bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row w-full p-2 md:p-8 transition-all duration-700 ease-in-out">
           {/* Left arrow */}
           <button
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow 
-        opacity-0 pointer-events-none 
-        group-hover:opacity-100 group-hover:pointer-events-auto 
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow
+        opacity-0 pointer-events-none
+        group-hover:opacity-100 group-hover:pointer-events-auto
         hover:bg-[#F5F5F7] hover:scale-110 transition cursor-pointer"
             onClick={() => setCurrentIndex((currentIndex - 1 + cards.length) % cards.length)}
             aria-label="previous testimonial"
@@ -107,6 +108,7 @@ export default function TestimonialCard() {
           >
             <FaLessThan />
           </button>
+
 
           {/* Text content */}
           <div className="flex-1 p-4 flex flex-col justify-center">
@@ -154,6 +156,7 @@ export default function TestimonialCard() {
             </div>
           </div>
 
+
           {/* Work image */}
           <div className="flex-1 flex items-center justify-center">
             <Suspense fallback={<div className="w-full h-56 bg-gray-200 rounded-xl animate-pulse" />}>
@@ -165,10 +168,11 @@ export default function TestimonialCard() {
             </Suspense>
           </div>
 
+
           {/* Right arrow */}
           <button
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow 
-        opacity-0 pointer-events-none 
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-white border border-gray-200 shadow
+        opacity-0 pointer-events-none
         group-hover:opacity-100 group-hover:pointer-events-auto
         hover:bg-[#F5F5F7] hover:scale-110 transition cursor-pointer"
             onClick={() => setCurrentIndex((currentIndex + 1) % cards.length)}
@@ -179,6 +183,6 @@ export default function TestimonialCard() {
           </button>``
         </div>
       </div>
-    </div>
+    </section>
   );
 }
