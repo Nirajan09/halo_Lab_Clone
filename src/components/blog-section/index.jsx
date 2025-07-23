@@ -19,7 +19,7 @@ const BlogSection = () => {
           </div>
         </div>
 
-        <p className="text-white text-lg md:text-3xl lg:text-[4.5rem] font-semibold leading-snug">
+        <p className="text-white text-lg md:text-3xl lg:text-4xl font-semibold leading-snug">
           The Halo Lab blog is a treasure trove of our best technical tips and expert knowledge.
           Here you will discover all the valuable secrets and trends of the IT industry.
         </p>
