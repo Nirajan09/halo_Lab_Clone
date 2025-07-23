@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import LazyImage from "../lazyloading-utils/blog-cards/index";
 
 const cards = [
@@ -21,17 +21,22 @@ const IMAGE_HOVER_DELAY = 180; // ms
 const BlogCards = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [delayedIdx, setDelayedIdx] = useState(null);
-  const timer = useRef();
+  const timer = useRef(null);
 
-  const handleCardMouseEnter = idx => {
+  // Use useCallback to memoize handlers to avoid recreating functions on every render
+  const handleCardMouseEnter = useCallback(idx => {
     setHoveredIndex(idx);
     timer.current = setTimeout(() => setDelayedIdx(idx), IMAGE_HOVER_DELAY);
-  };
-  const handleCardMouseLeave = () => {
+  }, []);
+
+  const handleCardMouseLeave = useCallback(() => {
     setHoveredIndex(null);
-    clearTimeout(timer.current);
+    if (timer.current) {
+      clearTimeout(timer.current);
+      timer.current = null;
+    }
     setDelayedIdx(null);
-  };
+  }, []);
 
   return (
     <div className="bg-[#080827] section flex items-center justify-center">
