@@ -17,99 +17,104 @@ const devServices = [
 ];
 
 const HeroServicesSection = () => (
-  <div className="section min-h-[30vh] flex flex-col items-center justify-center">
+  <section className="section min-h-[30vh] flex flex-col items-center justify-center">
     {/* Headline */}
-    <div className="text-center mb-12">
-      <h1 className="text-5xl md:text-6xl font-normal w-full text-white leading-tight">
+    <header className="text-center mb-12">
+      <h1 className="text-5xl md:text-6xl font-normal text-white leading-tight">
         WE TAKE PRODUCTS FROM ZERO TO HERO
       </h1>
-    </div>
+    </header>
 
     {/* Services Cards */}
-    <div className="flex flex-col sm:flex-row gap-8 bg-[#FFFFFF] rounded-2xl p-6 md:p-10 w-full">
+    <div className="flex flex-col sm:flex-row gap-8 bg-white rounded-2xl p-6 md:p-10 w-full">
       {/* Design Card */}
-      <div className="flex-1 rounded-xl px-4 py-6 shadow relative bg-[#F5F5F7]">
-        <div className="flex items-center justify-between mb-4 border-b border-[#b3b3b8] w-full pb-1">
-          <span className="text-xl font-semibold">Design</span>
-        </div>
+      <article className="flex-1 rounded-xl px-4 py-6 shadow relative bg-[#F5F5F7]">
+        <h2 className="flex items-center justify-between mb-4 border-b border-[#b3b3b8] w-full pb-1 text-xl font-semibold">
+          Design
+        </h2>
         <ul>
           {designServices.map((label, i) => (
             <li
               key={label}
-              className={`cursor-pointer flex items-center justify-between py-2 ${i < designServices.length - 1 ? "border-b border-[#b3b3b8] pb-1" : ""} w-full group`}
+              className={`cursor-pointer flex items-center justify-between py-2 ${
+                i < designServices.length - 1 ? "border-b border-[#b3b3b8] pb-1" : ""
+              } w-full group`}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && alert(`Selected ${label}`)}
+              aria-label={label}
             >
               <span className="text-base">{label}</span>
               <RiArrowRightUpLine
-                className="
-                  opacity-0
-                  translate-y-2
-                  group-hover:translate-y-0
-                  group-hover:opacity-100
-                  transition-all duration-300 ease-out
-                "
+                className="opacity-0 translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out"
+                aria-hidden="true"
               />
             </li>
           ))}
         </ul>
-      </div>
+      </article>
+
       {/* Development Card */}
-      <div className="flex-1 bg-[#F5F5F7] rounded-xl p-6 shadow relative">
-        <div className="flex items-center justify-between mb-4 border-b border-[#b3b3b8] w-full pb-1">
-          <span className="text-xl font-semibold">Development</span>
-        </div>
+      <article className="flex-1 bg-[#F5F5F7] rounded-xl p-6 shadow relative">
+        <h2 className="flex items-center justify-between mb-4 border-b border-[#b3b3b8] w-full pb-1 text-xl font-semibold">
+          Development
+        </h2>
         <ul>
           {devServices.map((label, i) => (
             <li
               key={label}
-              className={`cursor-pointer flex items-center justify-between py-2 ${i < devServices.length - 1 ? "border-b border-[#b3b3b8] pb-1" : ""} w-full group`}
+              className={`cursor-pointer flex items-center justify-between py-2 ${
+                i < devServices.length - 1 ? "border-b border-[#b3b3b8] pb-1" : ""
+              } w-full group`}
+              role="button"
+              tabIndex={0}
+              onClick={() => alert(`Selected ${label}`)}
+              aria-label={label}
             >
               <span className="text-base">{label}</span>
               <RiArrowRightUpLine
-                className="
-                  opacity-0
-                  translate-y-2
-                  group-hover:translate-y-0
-                  group-hover:opacity-100
-                  transition-all duration-300 ease-out
-                "
+                className="opacity-0 translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out"
+                aria-hidden="true"
               />
             </li>
           ))}
         </ul>
-      </div>
+      </article>
     </div>
 
     {/* Call to Action */}
     <div
-  className="
-    flex items-center flex-col sm:flex-row justify-between rounded-2xl bg-[#231B41] 
-    px-6 py-4 w-full mx-auto mt-8 shadow-md
-    transition-colors duration-200 delay-150
-    hover:bg-[#362865]
-  "
->
-      <div className="flex justify-between items-center gap-6 mb-4 sm:mb-0">
-        <span className="flex items-center justify-center w-10 h-10 rounded-full">
-          <img
-            src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/656d9abe1664aff65f24a621_icon-halo.svg"
-            loading="lazy"
-            alt=""
-            className="hidden sm:block"
-          />
-        </span>
-        <span className="text-white text-sm md:text-base lg:text-lg font-medium">
-          Need <span className="font-bold">bold design</span> or{" "}
-          <span className="font-bold">reliable code</span> or both? You're in the right place.
-        </span>
+      className="
+        flex flex-col sm:flex-row items-center justify-between rounded-2xl bg-[#231B41] 
+        px-6 py-4 w-full mx-auto mt-8 shadow-md
+        transition-colors duration-200 delay-150 hover:bg-[#362865]
+      "
+    >
+      <div className="flex items-center gap-6 mb-4 sm:mb-0">
+        <img
+          src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/656d9abe1664aff65f24a621_icon-halo.svg"
+          alt=""
+          loading="lazy"
+          className="hidden sm:block w-10 h-10"
+          aria-hidden="true"
+        />
+        <p className="text-white text-sm md:text-base lg:text-lg font-medium">
+          Need <strong>bold design</strong> or <strong>reliable code</strong> or both? You're in the right place.
+        </p>
       </div>
       <button
-        className="cursor-pointer ml-6 px-5 py-2 bg-yellow-400 text-[#191531] rounded-full shadow transition hover:bg-yellow-300 focus:outline-none text-sm md:text-base lg:text-lg font-normal whitespace-nowrap"
+        className="
+          cursor-pointer ml-6 px-5 py-2 bg-yellow-400 text-[#191531] rounded-full shadow 
+          transition hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300
+          text-sm md:text-base lg:text-lg font-normal whitespace-nowrap
+        "
         type="button"
+        aria-label="Book a call"
       >
         BOOK A CALL
       </button>
     </div>
-  </div>
+  </section>
 );
 
 export default HeroServicesSection;
