@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogSection = () => {
   return (
-    <div className="section flex items-center justify-between w-full">
+    <section className="section flex items-center justify-between w-full">
       <div className="grid lg:grid-cols-2 gap-4 md:gap-8 lg:gap-12 w-full items-center">
         {/* Hot Articles Badge */}
         <div className="flex lg:block justify-center lg:justify-start mb-8 md:mb-0">
@@ -19,12 +19,12 @@ const BlogSection = () => {
           </div>
         </div>
 
-        <p className="text-white text-lg md:text-3xl lg:text-4.5xl font-semibold leading-snug">
+        <p className="text-white text-lg md:text-3xl lg:text-[4.5rem] font-semibold leading-snug">
           The Halo Lab blog is a treasure trove of our best technical tips and expert knowledge.
           Here you will discover all the valuable secrets and trends of the IT industry.
         </p>
       </div>
-    </div>
+    </section>
   );
 };
 

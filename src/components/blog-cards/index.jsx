@@ -39,7 +39,7 @@ const BlogCards = () => {
   }, []);
 
   return (
-    <div className="bg-[#080827] section flex items-center justify-center">
+    <section className="bg-[#080827] section flex items-center justify-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
         {cards.map((card, idx) => (
           <div
@@ -75,7 +75,7 @@ const BlogCards = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

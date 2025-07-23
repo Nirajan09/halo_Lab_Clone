@@ -9,7 +9,7 @@ const AchievementCardSkeleton = () => (
 );
 
 const AchievementsSectionSkeleton = () => (
-  <div className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
+  <section className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
     <div
       className="flex gap-8 min-w-max"
     >
@@ -18,7 +18,7 @@ const AchievementsSectionSkeleton = () => (
         <AchievementCardSkeleton key={i} />
       ))}
     </div>
-  </div>
+  </section>
 );
 
 export default AchievementsSectionSkeleton;
