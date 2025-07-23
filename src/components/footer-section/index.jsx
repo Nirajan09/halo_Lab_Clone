@@ -78,13 +78,13 @@ const FooterSection = () => (
     <div className="mx-auto grid grid-rows-3">
       {rows.map((row, idx) => (
         <div
-  key={row}
-  className="border-t border-white/10 flex justify-between group"
->
-  <button className="w-full flex justify-between items-center py-4 text-left text-lg font-normal focus:outline-none transition">
-    <span className="justify-self-center">{row}</span>
-    <span
-      className="
+          key={idx}
+          className="border-t border-white/10 flex justify-between group"
+        >
+          <button className="w-full flex justify-between items-center py-4 text-left text-lg font-normal focus:outline-none transition">
+            <span className="justify-self-center">{row}</span>
+            <span
+              className="
         flex items-center justify-center
         text-2xl border border-transparent
         rounded-full
@@ -92,11 +92,11 @@ const FooterSection = () => (
         transition-all duration-200
         group-hover:bg-white group-hover:text-black
       "
-    >
-      +
-    </span>
-  </button>
-</div>
+            >
+              +
+            </span>
+          </button>
+        </div>
 
       ))}
       <div className="border-t border-white/10 flex justify-between mt-1"></div>
@@ -108,24 +108,24 @@ const FooterSection = () => (
         © Halo Lab. All rights reserved
       </div>
       <div className="flex gap-6 mt-3 sm:mt-0 text-base w-full">
-  {[
-    { label: "Manage cookies", href: "#" },
-    { label: "Terms and Conditions", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-  ].map((item) => (
-    <a
-      key={item.label}
-      href={item.href}
-      className="
+        {[
+          { label: "Manage cookies", href: "#" },
+          { label: "Terms and Conditions", href: "#" },
+          { label: "Privacy Policy", href: "#" },
+        ].map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className="
         flex items-center justify-center border border-white rounded-2xl w-50 h-12 text-center
         hover:bg-white hover:text-[#3813c2] hover:shadow-md 
         transition-all duration-200
       "
-    >
-      {item.label}
-    </a>
-  ))}
-</div>
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
 
     </div>
   </footer>
