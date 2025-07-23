@@ -38,7 +38,7 @@ function SectionWithSkeleton({ loading, Skeleton, children, ...fadeProps }) {
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
+    const timer = setTimeout(() => setLoading(false), 120);
     return () => clearTimeout(timer);
   }, []);
 
