@@ -34,13 +34,16 @@ const TrustedCompaniesSection = () => (
       }
     >
       <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
-        {logos.map(({ component: Component, key }) => (
-          <Component
-            key={key}
-            className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain"
-            aria-label={`${key} logo`}
-          />
-        ))}
+        {logos.map((logo) => {
+          const { component: Component, key } = logo;
+          return (
+            <Component
+              key={key}
+              className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain"
+              aria-label={`${key} logo`}
+            />
+          );
+        })}
       </div>
     </Suspense>
   </section>
