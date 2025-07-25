@@ -1,8 +1,9 @@
-import { lazy, Suspense, memo } from 'react';
+import { lazy, Suspense, memo, useMemo } from 'react';
 
-// Lazy-loaded avatar component
+// Lazy load avatar only once for efficiency
 const LazyAvatar = lazy(() => import('../lazyloading-utils/LazyAvatar'));
 
+// Static achievements data
 const achievements = [
   {
     avatarSrc: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df2245169d0dbda30cc38c_award-clutch.svg",
@@ -26,15 +27,20 @@ const achievements = [
   },
 ];
 
-// Repeat to create marquee effect
-const repeatedAchievements = Array(4).fill(achievements).flat();
-
+// Marquee repetition - memoize for performance (only recomputes if achievements changes)
 const SCROLL_DURATION = 30; // seconds
 
-// Memoized Achievements item
+const useRepeatedAchievements = (achievements, times) =>
+  useMemo(() => Array(times).fill(achievements).flat(), [achievements, times]);
+
+// Pure memoized Achievement Item
 const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
   return (
-    <div className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md">
+    <div
+      className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full 
+      w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md"
+      tabIndex={0} // accessibility: allow keyboard focus
+    >
       <Suspense
         fallback={
           <div className="w-20 h-20 rounded-full bg-gray-500 animate-pulse" />
@@ -44,22 +50,29 @@ const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
           src={avatarSrc}
           alt={title}
           className="w-20 h-20 rounded-full object-cover"
+          draggable={false} // prevents accidental drag ghost
+          loading="lazy"
+          decoding="async"
         />
       </Suspense>
-      <span className="text-white text-sm sm:text-base lg:text-lg font-semibold px-4 mb-4">
+      <span className="text-white text-sm sm:text-base lg:text-lg font-semibold px-4 mb-4 select-none">
         {title}
       </span>
     </div>
   );
 });
 
+AchievementItem.displayName = "AchievementItem";
+
 function AchievementsSection() {
+  const repeatedAchievements = useRepeatedAchievements(achievements, 4);
+
   return (
     <section className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
       <div
         className="flex gap-8 min-w-max animate-achievements-marquee"
         style={{
-          animation: `achievements-marquee ${SCROLL_DURATION}s linear infinite`
+          animation: `achievements-marquee ${SCROLL_DURATION}s linear infinite`,
         }}
       >
         {repeatedAchievements.map((item, idx) => (
