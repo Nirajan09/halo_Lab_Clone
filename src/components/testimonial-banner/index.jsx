@@ -1,13 +1,13 @@
-import { lazy, Suspense, useState } from "react";
-import { FaLessThan } from "react-icons/fa6";
-import { FaGreaterThan } from "react-icons/fa6";
+import { lazy, Suspense, useState, memo } from "react";
+import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 
+// Lazy loaded avatar/star
 const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 const STAR_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg";
 const CLUTCH_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/659faade8c491caeb4e43ac5_logo-clutch.svg";
 const AUTHOR_MAN_SRC = "../author/6596ea8404d31b14e01e406f_reviews-man.avif";
 
-const reviews = [
+const REVIEWS = [
   {
     rating: 5.0,
     text: "Halo Lab provided high-quality designs at a good value, and the client was happy with the number of frontend routes they developed. The team excelled at project management by having no delays and being adaptable to changes. Overall, they did an excellent job meeting the client's needs.",
@@ -80,15 +80,16 @@ const reviews = [
   },
 ];
 
+// Repeat the array for display - could be replaced with infinite scroll or carousel logic if wanted
+const REPEATED_REVIEWS = [...REVIEWS, ...REVIEWS, ...REVIEWS];
 
-const repeatedReviews = [...reviews, ...reviews, ...reviews];
-
-export default function TestimonialBannerSection() {
+function TestimonialBannerSection() {
   const [current, setCurrent] = useState(0);
-  const total = reviews.length;
+  const total = REVIEWS.length;
 
   const handlePrev = () => setCurrent(prev => (prev === 0 ? total - 1 : prev - 1));
   const handleNext = () => setCurrent(prev => (prev === total - 1 ? 0 : prev + 1));
+  const currentReview = REVIEWS[current];
 
   return (
     <section className="section" aria-label="Testimonials and reviews">
@@ -107,10 +108,11 @@ export default function TestimonialBannerSection() {
         </h2>
       </div>
 
+      {/* Testimonial banner grid */}
       <div className="mt-10 grid gap-10 overflow-x-auto lg:overflow-hidden">
         <div className="flex gap-8 animate-banner-scroll" style={{ width: `432px` }}>
           {/* Desktop: author image & rating panel */}
-          <div className="rounded-2xl p-7 w-[400px] flex-shrink-0 overflow-hidden h-[60vh] flex-col shadow-lg hidden lg:flex xl:mr-71 relative">
+          <div className="rounded-2xl p-7 w-[400px] flex-shrink-0 overflow-hidden h-[60vh] flex-col shadow-lg hidden lg:flex xl:mr-71 relative" aria-label="Clutch rating summary">
             <div className="h-[70vh]">
               <Suspense fallback={<div className="w-full h-full bg-gray-700 rounded-xl animate-pulse" />}>
                 <LazyAvatar src={AUTHOR_MAN_SRC} alt="Testimonial author" className="w-100 object-cover" />
@@ -123,64 +125,67 @@ export default function TestimonialBannerSection() {
                 are you'll be impressed too.
               </p>
               <div className="flex justify-start gap-6">
-                <div
+                <button
                   className="cursor-pointer rounded-full p-4 border border-white transition-transform duration-200 hover:bg-white hover:text-[#3719CA] hover:shadow-lg"
+                  aria-label="Previous testimonial"
                   onClick={handlePrev}
+                  type="button"
                 >
                   <FaLessThan />
-                </div>
-                <div
+                </button>
+                <button
                   className="cursor-pointer rounded-full p-4 border border-white transition-transform duration-200 hover:bg-white hover:text-[#3719CA] hover:shadow-lg"
+                  aria-label="Next testimonial"
                   onClick={handleNext}
+                  type="button"
                 >
                   <FaGreaterThan />
-                </div>
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Desktop testimonials */}
-          {repeatedReviews.map((review, idx) => (
-            <div
-              key={idx}
-              className="hidden lg:flex bg-[#3719CA] rounded-2xl p-7 w-[400px] flex-shrink-0 h-[40vh] lg:h-[60vh] flex-col shadow-lg lg:mr-20 xl:mr-40 hover:bg-[#513DD7] transition-colors duration-300"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-yellow-400 text-lg font-bold mt-1">{reviews[current].rating}</span>
-                <div className="flex gap-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Suspense key={i} fallback={<div className="w-4 h-4 bg-gray-700 rounded-full animate-pulse" />}>
-                      <LazyAvatar src={STAR_SRC} alt="star icon" className="w-4 h-4" />
-                    </Suspense>
-                  ))}
-                </div>
-              </div>
-              <p className="text-white text-lg mb-6">{reviews[current].text}</p>
-              <div className="flex items-center gap-3 mt-auto pt-2">
-                {review.avatar ? (
-                  <Suspense fallback={<div className="w-10 h-10 rounded-full bg-[#322570] animate-pulse" />}>
-                    <LazyAvatar
-                      src={reviews[current].avatar}
-                      alt={reviews[current].user}
-                      className="w-10 h-10 rounded-full object-cover border-2 border-[#322570]"
-                    />
+          {/* Desktop testimonial - Only currently active review is shown */}
+          <div
+            className="hidden lg:flex bg-[#3719CA] rounded-2xl p-7 w-[400px] flex-shrink-0 h-[40vh] lg:h-[60vh] flex-col shadow-lg lg:mr-20 xl:mr-40 hover:bg-[#513DD7] transition-colors duration-300"
+            aria-label={`Testimonial by ${currentReview.user}`}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-yellow-400 text-lg font-bold mt-1">{currentReview.rating}</span>
+              <div className="flex gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <Suspense key={i} fallback={<div className="w-4 h-4 bg-gray-700 rounded-full animate-pulse" />}>
+                    <LazyAvatar src={STAR_SRC} alt="star icon" className="w-4 h-4" />
                   </Suspense>
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-[#322570]" />
-                )}
-                <div>
-                  <span className="block text-white font-semibold text-sm">{reviews[current].user}</span>
-                  <span className="block text-[#bcb7e5] text-xs">{reviews[current].title}</span>
-                </div>
+                ))}
               </div>
             </div>
-          ))}
+            <p className="text-white text-lg mb-6">{currentReview.text}</p>
+            <div className="flex items-center gap-3 mt-auto pt-2">
+              {currentReview.avatar ? (
+                <Suspense fallback={<div className="w-10 h-10 rounded-full bg-[#322570] animate-pulse" />}>
+                  <LazyAvatar
+                    src={currentReview.avatar}
+                    alt={currentReview.user}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-[#322570]"
+                  />
+                </Suspense>
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-[#322570]" />
+              )}
+              <div>
+                <span className="block text-white font-semibold text-sm">{currentReview.user}</span>
+                <span className="block text-[#bcb7e5] text-xs">{currentReview.title}</span>
+              </div>
+            </div>
+          </div>
 
-          {/* Mobile testimonials */}
-          {repeatedReviews.map((review, idx) => (
+          {/* Mobile testimonials - All repeated reviews looped on mobile (for scroll effect) */}
+          {REPEATED_REVIEWS.map((review, idx) => (
             <div
-              key={idx}
+              key={`${review.user}-${idx}`}
               className="lg:hidden bg-[#3719CA] rounded-2xl p-7 w-[400px] flex-shrink-0 h-[60vh] flex flex-col shadow-lg"
+              aria-label={`Testimonial by ${review.user}`}
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-yellow-400 text-lg font-bold mt-1">{review.rating}</span>
@@ -217,3 +222,5 @@ export default function TestimonialBannerSection() {
     </section>
   );
 }
+
+export default memo(TestimonialBannerSection);
