@@ -1,31 +1,28 @@
 import { lazy, Suspense, memo } from 'react';
 
-// Lazy-loaded award components
-const DribbbleAward = lazy(() => import('../lazyloading-utils/achievement-section/DribbleAward'));
-const ClutchAward = lazy(() => import('../lazyloading-utils/achievement-section/ClutchAward'));
-const GoodFirmsAward = lazy(() => import('../lazyloading-utils/achievement-section/GoodFirmsAward'));
-const UpworkAward = lazy(() => import('../lazyloading-utils/achievement-section/UpworkAward'));
+// Lazy-loaded avatar component
+const LazyAvatar = lazy(() => import('../lazyloading-utils/LazyAvatar'));
 
 const achievements = [
   {
-    Img: DribbbleAward,
+    avatarSrc: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df2245169d0dbda30cc38c_award-clutch.svg",
     title: "Top Team in the world on Dribbble",
-    key: "dribbble"
+    key: "dribbble",
   },
   {
-    Img: ClutchAward,
+    avatarSrc: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df22453a88d0237804696b_award-dribbble.svg",
     title: "Top 100 Global Service Providers by Clutch",
-    key: "clutch"
+    key: "clutch",
   },
   {
-    Img: GoodFirmsAward,
+    avatarSrc: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df2245d0569f8fce1a81c6_award-5stars.svg",
     title: "5 Stars Rating on GoodFirms",
-    key: "goodfirms"
+    key: "goodfirms",
   },
   {
-    Img: UpworkAward,
+    avatarSrc: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65df2248b0570f11feddea87_award-upwork.svg",
     title: "100% Job Success on Upwork",
-    key: "upwork"
+    key: "upwork",
   },
 ];
 
@@ -34,15 +31,20 @@ const repeatedAchievements = Array(4).fill(achievements).flat();
 
 const SCROLL_DURATION = 30; // seconds
 
-// Memoized AchievementItem
-const AchievementItem = memo(function AchievementItem({ Img, title }) {
-  const ImgComponent = Img;
+// Memoized Achievements item
+const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
   return (
     <div className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md">
-      <Suspense fallback={
-        <div className="bg-gray-700 rounded-full w-20 h-20 animate-pulse" />
-      }>
-        <ImgComponent className="w-20 h-20 object-contain" />
+      <Suspense
+        fallback={
+          <div className="w-20 h-20 rounded-full bg-gray-500 animate-pulse" />
+        }
+      >
+        <LazyAvatar
+          src={avatarSrc}
+          alt={title}
+          className="w-20 h-20 rounded-full object-cover"
+        />
       </Suspense>
       <span className="text-white text-sm sm:text-base lg:text-lg font-semibold px-4 mb-4">
         {title}
@@ -51,7 +53,6 @@ const AchievementItem = memo(function AchievementItem({ Img, title }) {
   );
 });
 
-// Main Section
 function AchievementsSection() {
   return (
     <section className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
@@ -62,7 +63,11 @@ function AchievementsSection() {
         }}
       >
         {repeatedAchievements.map((item, idx) => (
-          <AchievementItem Img={item.Img} title={item.title} key={`${item.key}-${idx}`} />
+          <AchievementItem
+            avatarSrc={item.avatarSrc}
+            title={item.title}
+            key={`${item.key}-${idx}`}
+          />
         ))}
       </div>
     </section>
