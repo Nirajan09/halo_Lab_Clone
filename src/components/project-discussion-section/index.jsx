@@ -1,8 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 
 const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 
-const awards = [
+const AWARDS = [
   {
     subtitle: "4.9 AVG. SCORE BASED ON 80+ REVIEWS",
     image:
@@ -35,10 +35,13 @@ const ProjectDiscussionSection = () => (
       p-6 md:p-12 
       flex flex-col items-center justify-center
     "
+    aria-labelledby="project-discuss-heading"
   >
-    {/* Main Card */}
     <article className="bg-white rounded-[2.5rem] rounded-tr-[4rem] p-8 md:p-16 w-full max-w-4xl flex flex-col items-center shadow-lg mb-12">
-      <h2 className="text-[#15122E] text-3xl md:text-5xl lg:text-[50px] font-medium text-center mb-6">
+      <h2
+        id="project-discuss-heading"
+        className="text-[#15122E] text-3xl md:text-5xl lg:text-[50px] font-medium text-center mb-6"
+      >
         Ready to discuss <br className="hidden md:block" /> your project with us?
       </h2>
       <p className="text-[#15122E] opacity-80 text-base md:text-xl text-center mb-8 max-w-2xl leading-relaxed">
@@ -60,16 +63,26 @@ const ProjectDiscussionSection = () => (
         BOOK A CALL
       </button>
     </article>
-
     {/* Awards Grid */}
     <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 text-center mb-4">
-      {awards.map((award, idx) => (
-        <div key={idx} className="flex flex-col items-center gap-4">
-          <Suspense fallback={<div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse" />}>
-            <LazyAvatar src={award.image} alt={award.subtitle} />
+      {AWARDS.map(({ subtitle, image }, idx) => (
+        <div key={subtitle} className="flex flex-col items-center gap-4" tabIndex={0} aria-label={subtitle}>
+          <Suspense
+            fallback={
+              <div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse" />
+            }
+          >
+            <LazyAvatar
+              src={image}
+              alt={subtitle}
+              className="w-16 h-16 object-contain bg-white rounded-full shadow"
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
           </Suspense>
-          <div className="text-white text-xs md:text-sm opacity-70 uppercase tracking-tight">
-            {award.subtitle}
+          <div className="text-white text-xs md:text-sm opacity-70 uppercase tracking-tight select-none">
+            {subtitle}
           </div>
         </div>
       ))}
@@ -77,4 +90,4 @@ const ProjectDiscussionSection = () => (
   </section>
 );
 
-export default ProjectDiscussionSection;
+export default memo(ProjectDiscussionSection);
