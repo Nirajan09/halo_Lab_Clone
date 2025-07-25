@@ -65,24 +65,13 @@ const ProjectDiscussionSection = () => (
     </article>
     {/* Awards Grid */}
     <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 text-center mb-4">
-      {AWARDS.map(({ subtitle, image }, idx) => (
-        <div key={subtitle} className="flex flex-col items-center gap-4" tabIndex={0} aria-label={subtitle}>
-          <Suspense
-            fallback={
-              <div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse" />
-            }
-          >
-            <LazyAvatar
-              src={image}
-              alt={subtitle}
-              className="w-16 h-16 object-contain bg-white rounded-full shadow"
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-            />
+      {AWARDS.map((award, idx) => (
+        <div key={idx} className="flex flex-col items-center gap-4">
+          <Suspense fallback={<div className="w-16 h-16 bg-gray-200 rounded-full animate-pulse" />}>
+            <LazyAvatar src={award.image} alt={award.subtitle} />
           </Suspense>
-          <div className="text-white text-xs md:text-sm opacity-70 uppercase tracking-tight select-none">
-            {subtitle}
+          <div className="text-white text-xs md:text-sm opacity-70 uppercase tracking-tight">
+            {award.subtitle}
           </div>
         </div>
       ))}
