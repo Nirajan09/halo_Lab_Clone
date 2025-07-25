@@ -1,8 +1,7 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 
-// Lazy-load image wrapper for all images in the card
-const LazyAvatar = lazy(() => import("../lazyloading-utils/testimonial-banner/LazyAvatar"));
+const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 
   const cards = [
     {

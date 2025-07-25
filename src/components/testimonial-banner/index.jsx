@@ -2,10 +2,11 @@ import { lazy, Suspense, useState } from "react";
 import { FaLessThan } from "react-icons/fa6";
 import { FaGreaterThan } from "react-icons/fa6";
 
-const LazyAvatar = lazy(() => import("../lazyloading-utils/testimonial-banner/LazyAvatar"));
+const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 const STAR_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg";
 const CLUTCH_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/659faade8c491caeb4e43ac5_logo-clutch.svg";
 const AUTHOR_MAN_SRC = "../author/6596ea8404d31b14e01e406f_reviews-man.avif";
+
 const reviews = [
   {
     rating: 5.0,
@@ -95,11 +96,7 @@ export default function TestimonialBannerSection() {
       <div className="max-w-2xl mx-auto flex flex-col items-start sm:items-center">
         <div className="flex items-center justify-between gap-3 mb-5 border border-white rounded-3xl px-5 py-3">
           <Suspense fallback={<div className="w-10 h-10 bg-gray-700 rounded-full animate-pulse" />}>
-            <LazyAvatar
-              src={CLUTCH_SRC}
-              alt="Clutch logo"
-              className="w-10 h-10"
-            />
+            <LazyAvatar src={CLUTCH_SRC} alt="Clutch logo" className="w-10 h-10" />
           </Suspense>
           <div className="bg-[#221d3a] px-4 py-1 rounded-full text-xs font-bold tracking-wide text-white">
             80+ REVIEWS
@@ -116,11 +113,7 @@ export default function TestimonialBannerSection() {
           <div className="rounded-2xl p-7 w-[400px] flex-shrink-0 overflow-hidden h-[60vh] flex-col shadow-lg hidden lg:flex xl:mr-71 relative">
             <div className="h-[70vh]">
               <Suspense fallback={<div className="w-full h-full bg-gray-700 rounded-xl animate-pulse" />}>
-                <LazyAvatar
-                  src={AUTHOR_MAN_SRC}
-                  alt="Testimonial author"
-                  className="w-100 object-cover"
-                />
+                <LazyAvatar src={AUTHOR_MAN_SRC} alt="Testimonial author" className="w-100 object-cover" />
               </Suspense>
             </div>
             <div className="text-white absolute">
@@ -157,11 +150,7 @@ export default function TestimonialBannerSection() {
                 <div className="flex gap-2">
                   {[...Array(5)].map((_, i) => (
                     <Suspense key={i} fallback={<div className="w-4 h-4 bg-gray-700 rounded-full animate-pulse" />}>
-                      <LazyAvatar
-                        src={STAR_SRC}
-                        alt="star icon"
-                        className="w-4 h-4"
-                      />
+                      <LazyAvatar src={STAR_SRC} alt="star icon" className="w-4 h-4" />
                     </Suspense>
                   ))}
                 </div>
@@ -198,11 +187,7 @@ export default function TestimonialBannerSection() {
                 <div className="flex gap-2">
                   {[...Array(5)].map((_, i) => (
                     <Suspense key={i} fallback={<div className="w-4 h-4 bg-gray-700 rounded-full animate-pulse" />}>
-                      <LazyAvatar
-                        src={STAR_SRC}
-                        alt="star icon"
-                        className="w-4 h-4"
-                      />
+                      <LazyAvatar src={STAR_SRC} alt="star icon" className="w-4 h-4" />
                     </Suspense>
                   ))}
                 </div>
