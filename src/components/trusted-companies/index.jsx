@@ -1,8 +1,10 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, memo } from "react";
 
+// One shared lazy image import for all logos
 const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 
-const logos = [
+// Constant array outside render for stability and referential integrity
+const LOGOS = [
   {
     src: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/65c4cdd76ec1f96fd1e9ff8b_logo-nokia.svg",
     alt: "Nokia logo",
@@ -46,26 +48,37 @@ const LogoPlaceholder = () => (
 const TrustedCompaniesSection = () => (
   <section
     className="section relative flex justify-center items-center min-h-[30vh] md:min-h-[25vh] border rounded-xl p-5 border-white"
-    aria-label="Trusted companies"
+    aria-labelledby="trusted-companies-title"
   >
-    <p className="absolute left-[25%] top-[-0.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center z-10 sm:text-[0.625rem] lg:text-base xl:text-lg">
+    <p
+      id="trusted-companies-title"
+      className="absolute left-[25%] top-[-0.5rem] w-[50%] lg:w-[40%] bg-[#02021E] text-xs text-gray-400 text-center z-10 sm:text-[0.625rem] lg:text-base xl:text-lg"
+    >
       Trusted by global brands &amp; SMBs in the US and Europe
     </p>
 
     <Suspense
       fallback={
-        <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center" aria-hidden="true">
-          {[...Array(6)].map((_, i) => <LogoPlaceholder key={i} />)}
+        <div
+          className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center"
+          aria-hidden="true"
+        >
+          {LOGOS.map((_, i) => <LogoPlaceholder key={i} />)}
         </div>
       }
     >
       <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
-        {logos.map(({ src, alt, key }) => (
+        {LOGOS.map(({ src, alt, key }) => (
           <LazyAvatar
             key={key}
             src={src}
             alt={alt}
             className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain"
+            width={100}
+            height={48}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
             aria-label={alt}
           />
         ))}
@@ -74,4 +87,4 @@ const TrustedCompaniesSection = () => (
   </section>
 );
 
-export default TrustedCompaniesSection;
+export default memo(TrustedCompaniesSection);
