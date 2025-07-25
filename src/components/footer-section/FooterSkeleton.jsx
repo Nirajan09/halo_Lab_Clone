@@ -1,5 +1,3 @@
-import React from "react";
-
 // Animated gray box for badge placeholders
 const BadgeSkeleton = () => (
   <div className="w-full h-12 bg-gray-700 rounded-lg animate-pulse" />

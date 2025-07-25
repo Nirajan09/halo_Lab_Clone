@@ -1,5 +1,3 @@
-import React from "react";
-
 const FounderSectionSkeleton = () => (
   <div className="section max-h-[350px] flex flex-col md:flex-row-reverse items-start md:items-stretch justify-between rounded-xl mx-auto">
     {/* Text Section Skeleton */}

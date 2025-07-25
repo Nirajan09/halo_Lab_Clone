@@ -1,5 +1,3 @@
-import React from "react";
-
 // A reusable circle for icons/skeleton avatars
 const CircleSkeleton = ({ size = 32, className = "" }) => (
   <div

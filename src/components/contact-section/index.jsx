@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaDribbble, FaInstagram, FaBehance, FaLinkedinIn, FaGithubAlt } from "react-icons/fa";
 import { FaWebflow, FaWhatsapp } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";

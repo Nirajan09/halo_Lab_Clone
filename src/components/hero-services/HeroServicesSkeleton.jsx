@@ -1,5 +1,3 @@
-
-
 const ListSkeleton = ({rows}) => (
   <ul>
     {Array.from({length: rows}).map((_, i) => (
