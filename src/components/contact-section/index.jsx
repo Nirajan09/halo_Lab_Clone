@@ -4,6 +4,7 @@ import { FaWebflow, FaWhatsapp } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";
 import { MdOutlineEmail } from "react-icons/md";
 
+// Services and Icons data
 const services = [
   "Projects",
   "Dedicated team",
@@ -22,26 +23,67 @@ const contactIcons = [
   { icon: <FaGithubAlt />, hover: "hover:text-gray-800", label: "GitHub" },
 ];
 
+const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
 const ContactSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  // Optional: Success message state, if you want to confirm submission
+  const [success, setSuccess] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSuccess('');
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    setError('');
+    setSuccess('Thanks for subscribing!'); // replace with real logic (API, etc.)
+    setEmail(''); // Optionally clear input after success
+  };
 
   return (
     <section className="section w-full text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-10">
-
+        
         {/* Column 1: Newsletter & Social icons */}
         <div>
           <h2 className="text-2xl font-normal mb-6">
             Subscribe to our newsletter to stay in touch with the latest.
           </h2>
 
-          <form className="flex items-center mb-6" onSubmit={e => e.preventDefault()}>
+          <form
+            className="flex flex-col items-start mb-6"
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <div className="relative md:w-full w-[90%]">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full rounded-full px-6 py-3 pr-12 text-white outline-none focus:ring-2 bg-transparent border border-white border-opacity-30"
+                className={`w-full rounded-full px-6 py-3 pr-12 text-white outline-none focus:ring-2 bg-transparent border border-white border-opacity-30 ${
+                  error ? "border-red-500" : ""
+                }`}
                 aria-label="Email address"
+                value={email}
+                onChange={e => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                  if (success) setSuccess('');
+                }}
+                onBlur={e => {
+                  if (e.target.value && !isValidEmail(e.target.value)) {
+                    setError("Please enter a valid email address");
+                  }
+                }}
+                autoComplete="email"
               />
               <button
                 type="submit"
@@ -51,6 +93,12 @@ const ContactSection = () => {
                 <MdOutlineEmail color='black' />
               </button>
             </div>
+            {error && (
+              <div className="text-red-400 text-xs mt-2 ml-2">{error}</div>
+            )}
+            {success && (
+              <div className="text-green-400 text-xs mt-2 ml-2">{success}</div>
+            )}
           </form>
 
           <div className="mb-2 uppercase text-sm text-white/70 font-normal">Follow us here:</div>
