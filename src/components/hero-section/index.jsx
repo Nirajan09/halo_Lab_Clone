@@ -1,3 +1,10 @@
+import { memo } from "react";
+
+const FIRE_ICON_URL =
+  "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67bdb3b2f4c3ff24144f7bc0_home-hero-fire.avif";
+const VIDEO_SRC =
+  "https://d3vlq52qrgdnc2.cloudfront.net/UIUX-Showreel-preview-big.mp4";
+
 const HeroSection = () => (
   <section
     className="
@@ -6,6 +13,7 @@ const HeroSection = () => (
       w-full
       min-h-[80vh] md:min-h-[60vh]
     "
+    aria-labelledby="hero-title"
   >
     {/* Left Section */}
     <article
@@ -19,13 +27,14 @@ const HeroSection = () => (
       "
     >
       <h1
+        id="hero-title"
         className="
           text-center md:text-left
           text-4xl md:text-3xl lg:text-5xl 
           font-normal leading-[1.15] mb-8
         "
       >
-        DESIGN & TECH<br />
+        DESIGN &amp; TECH<br />
         AGENCY HELPING<br />
         BRANDS BECOME<br />
         <span className="text-[#ffd23f]">TOP 1%</span>
@@ -33,10 +42,14 @@ const HeroSection = () => (
       <div className="flex flex-col items-center md:items-start">
         <div className="flex items-center text-base gap-4 mb-4">
           <img
-            src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/67bdb3b2f4c3ff24144f7bc0_home-hero-fire.avif"
+            src={FIRE_ICON_URL}
             loading="lazy"
             alt="Animated fire icon"
             className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+            width={48}
+            height={48}
+            decoding="async"
+            draggable={false}
           />
           <p className="text-base sm:text-xl">
             12 years of design-driven development for B2B products
@@ -83,13 +96,15 @@ const HeroSection = () => (
           muted
           loop
           playsInline
-          loading="lazy"
+          preload="none"
+          poster=""
           aria-label="Showreel video playing"
+          tabIndex={-1}
+          width="500"
+          height="500"
+          style={{ background: "#f5f3f0" }}
         >
-          <source
-            src="https://d3vlq52qrgdnc2.cloudfront.net/UIUX-Showreel-preview-big.mp4"
-            type="video/mp4"
-          />
+          <source src={VIDEO_SRC} type="video/mp4" />
         </video>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <svg
@@ -109,4 +124,4 @@ const HeroSection = () => (
   </section>
 );
 
-export default HeroSection;
+export default memo(HeroSection);
