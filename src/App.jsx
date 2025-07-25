@@ -30,8 +30,9 @@ import ContactSectionSkeleton from './components/contact-section/ContactSectionS
 import BlogCardsSkeleton from './components/blog-cards/BlogCardsSkeleton'
 
 function SectionWithSkeleton({ loading, skeleton: Skeleton, children, ...fadeProps }) {
+  const SkeletonComponent = Skeleton;
   return loading
-    ? <Skeleton />
+    ? <SkeletonComponent />
     : <ScrollFadeInSection {...fadeProps}>{children}</ScrollFadeInSection>;
 }
 
