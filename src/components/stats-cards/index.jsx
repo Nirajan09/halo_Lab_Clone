@@ -41,7 +41,7 @@ function StatCards() {
     >
       {STATS.map(({ value, label, labelText }, i) => (
         <article
-          key={labelText}
+          key={i}
           aria-label={labelText}
           className="
             rounded-2xl bg-[#2F1F4A] px-8 py-8 shadow-lg min-w-[270px] relative flex flex-col items-start

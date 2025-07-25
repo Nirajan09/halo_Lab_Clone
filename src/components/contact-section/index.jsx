@@ -111,7 +111,7 @@ const ContactSection = () => {
           <div className="flex gap-4 mt-2">
             {CONTACT_ICONS.map(({ icon, hover, label, href }, idx) => (
               <a
-                key={label}
+                key={idx}
                 href={href}
                 tabIndex={0}
                 className={`

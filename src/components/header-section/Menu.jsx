@@ -126,7 +126,7 @@ const Menu = () => {
           <hr className="border border-gray-300 mb-4" />
           <div className="flex gap-2">
             {RESOURCE_ITEMS.map((text, i) => (
-              <div className="flex flex-col w-1/2" key={text}>
+              <div className="flex flex-col w-1/2" key={i}>
                 <div className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition-colors hover:text-indigo-600" tabIndex={0}>
                   {text}
                 </div>

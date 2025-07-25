@@ -94,7 +94,7 @@ const FooterSection = () => (
     <div className="mx-auto grid grid-rows-3">
       {ROWS.map((row, idx) => (
         <div
-          key={row}
+          key={idx}
           className="border-t border-white/10 flex justify-between group"
         >
           <button
