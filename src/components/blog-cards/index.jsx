@@ -1,5 +1,6 @@
-import { useRef, useCallback, useState } from "react";
-import LazyImage from "../lazyloading-utils/blog-cards/index";
+import { useRef, useCallback, useState, lazy, Suspense } from "react";
+
+const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 
 const cards = [
   {
@@ -19,7 +20,6 @@ const cards = [
 const IMAGE_HOVER_DELAY = 180; // ms
 
 const BlogCards = () => {
-  // Only manage delayedIdx and timer
   const [delayedIdx, setDelayedIdx] = useState(null);
   const timer = useRef(null);
 
@@ -52,14 +52,20 @@ const BlogCards = () => {
             onMouseLeave={handleCardMouseLeave}
           >
             <div className="absolute left-1/2 -translate-x-1/2 top-8 transition-transform duration-600">
-              <LazyImage
-                src={
-                  delayedIdx === idx
-                    ? card.imageAfterAnimate
-                    : card.imageBeforeAnimate
+              <Suspense
+                fallback={
+                  <div className="w-20 h-20 bg-gray-300 rounded-lg animate-pulse" />
                 }
-                alt=""
-              />
+              >
+                <LazyAvatar
+                  src={
+                    delayedIdx === idx
+                      ? card.imageAfterAnimate
+                      : card.imageBeforeAnimate
+                  }
+                  alt={card.title}
+                />
+              </Suspense>
             </div>
             <div className="mt-32">
               <h3 className="text-white text-xl md:text-2xl font-bold leading-snug mb-6">
