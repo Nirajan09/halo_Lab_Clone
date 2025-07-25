@@ -1,11 +1,11 @@
-import  { useState } from 'react';
+import { useState, memo, useCallback } from 'react';
 import { FaDribbble, FaInstagram, FaBehance, FaLinkedinIn, FaGithubAlt } from "react-icons/fa";
 import { FaWebflow, FaWhatsapp } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";
 import { MdOutlineEmail } from "react-icons/md";
 
-// Services and Icons data
-const services = [
+// Static data outside component for stable references
+const SERVICES = [
   "Projects",
   "Dedicated team",
   "Open Source",
@@ -14,26 +14,37 @@ const services = [
   "Blog",
 ];
 
-const contactIcons = [
-  { icon: <FaDribbble />, hover: "hover:text-pink-400", label: "Dribbble" },
-  { icon: <FaInstagram />, hover: "hover:text-fuchsia-500", label: "Instagram" },
-  { icon: <FaBehance />, hover: "hover:text-blue-400", label: "Behance" },
-  { icon: <FaWebflow />, hover: "hover:text-indigo-400", label: "Webflow" },
-  { icon: <FaLinkedinIn />, hover: "hover:text-blue-500", label: "LinkedIn" },
-  { icon: <FaGithubAlt />, hover: "hover:text-gray-800", label: "GitHub" },
+const CONTACT_ICONS = [
+  { icon: <FaDribbble />, hover: "hover:text-pink-400", label: "Dribbble", href: "#" },
+  { icon: <FaInstagram />, hover: "hover:text-fuchsia-500", label: "Instagram", href: "#" },
+  { icon: <FaBehance />, hover: "hover:text-blue-400", label: "Behance", href: "#" },
+  { icon: <FaWebflow />, hover: "hover:text-indigo-400", label: "Webflow", href: "#" },
+  { icon: <FaLinkedinIn />, hover: "hover:text-blue-500", label: "LinkedIn", href: "#" },
+  { icon: <FaGithubAlt />, hover: "hover:text-gray-800", label: "GitHub", href: "#" },
 ];
 
-const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const isValidEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const ContactSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-
-  // Optional: Success message state, if you want to confirm submission
   const [success, setSuccess] = useState('');
 
-  const handleSubmit = (e) => {
+  // Callbacks for handlers
+  const handleEmailChange = useCallback(e => {
+    setEmail(e.target.value);
+    if (error) setError('');
+    if (success) setSuccess('');
+  }, [error, success]);
+
+  const handleEmailBlur = useCallback(e => {
+    if (e.target.value && !isValidEmail(e.target.value)) {
+      setError("Please enter a valid email address");
+    }
+  }, []);
+
+  const handleSubmit = useCallback(e => {
     e.preventDefault();
     setSuccess('');
     if (!email) {
@@ -45,24 +56,26 @@ const ContactSection = () => {
       return;
     }
     setError('');
-    setSuccess('Thanks for subscribing!'); // replace with real logic (API, etc.)
-    setEmail(''); // Optionally clear input after success
-  };
+    setSuccess('Thanks for subscribing!');
+    setEmail('');
+  }, [email]);
 
   return (
-    <section className="section w-full text-white">
+    <section className="section w-full text-white" aria-labelledby="contact-section-heading">
+      <h2 id="contact-section-heading" className="sr-only">Contact Halo Lab</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-10">
-        
         {/* Column 1: Newsletter & Social icons */}
         <div>
-          <h2 className="text-2xl font-normal mb-6">
+          <p className="text-2xl font-normal mb-6">
             Subscribe to our newsletter to stay in touch with the latest.
-          </h2>
+          </p>
 
           <form
             className="flex flex-col items-start mb-6"
             onSubmit={handleSubmit}
             noValidate
+            autoComplete="off"
+            aria-label="Email newsletter subscription form"
           >
             <div className="relative md:w-full w-[90%]">
               <input
@@ -73,17 +86,10 @@ const ContactSection = () => {
                 }`}
                 aria-label="Email address"
                 value={email}
-                onChange={e => {
-                  setEmail(e.target.value);
-                  if (error) setError('');
-                  if (success) setSuccess('');
-                }}
-                onBlur={e => {
-                  if (e.target.value && !isValidEmail(e.target.value)) {
-                    setError("Please enter a valid email address");
-                  }
-                }}
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
                 autoComplete="email"
+                required
               />
               <button
                 type="submit"
@@ -94,19 +100,19 @@ const ContactSection = () => {
               </button>
             </div>
             {error && (
-              <div className="text-red-400 text-xs mt-2 ml-2">{error}</div>
+              <div className="text-red-400 text-xs mt-2 ml-2" role="alert">{error}</div>
             )}
             {success && (
-              <div className="text-green-400 text-xs mt-2 ml-2">{success}</div>
+              <div className="text-green-400 text-xs mt-2 ml-2" role="status">{success}</div>
             )}
           </form>
 
           <div className="mb-2 uppercase text-sm text-white/70 font-normal">Follow us here:</div>
           <div className="flex gap-4 mt-2">
-            {contactIcons.map(({ icon, hover, label }, idx) => (
+            {CONTACT_ICONS.map(({ icon, hover, label, href }, idx) => (
               <a
-                key={idx}
-                href="#"
+                key={label}
+                href={href}
                 tabIndex={0}
                 className={`
                   rounded-full p-2 sm:p-3 border border-white text-white transition-all duration-200
@@ -114,6 +120,8 @@ const ContactSection = () => {
                   ${hover} cursor-pointer
                 `}
                 aria-label={label}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 {icon}
               </a>
@@ -127,7 +135,7 @@ const ContactSection = () => {
             <li className="text-xl flex items-center gap-1 font-semibold select-none cursor-default">
               Our Services <span aria-hidden="true">+</span>
             </li>
-            {services.map((service, idx) => (
+            {SERVICES.map((service, idx) => (
               <li
                 key={service}
                 className="flex gap-3 items-center w-[12.5rem] group cursor-pointer"
@@ -165,7 +173,7 @@ const ContactSection = () => {
               href="tel:+12133378573"
               className="flex items-center gap-2 text-lg text-white hover:underline"
             >
-              <FaWhatsapp size={25} />
+              <FaWhatsapp size={25} aria-label="WhatsApp" />
               +1 (213) 337-8573
             </a>
           </div>
@@ -175,4 +183,5 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+ContactSection.displayName = "ContactSection";
+export default memo(ContactSection);
