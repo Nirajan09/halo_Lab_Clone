@@ -1,12 +1,12 @@
-import  { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 
 const logos = [
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/NokiaLogo')), key: 'nokia' },
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/BumbleLogo')), key: 'bumble' },
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/SchibstedLogo')), key: 'schibsted' },
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/OperaLogo')), key: 'opera' },
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/BonterraLogo')), key: 'bonterra' },
-  { Component: lazy(() => import('../lazyloading-utils/trusted-companies/ZoomLogo')), key: 'zoom' }
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/NokiaLogo')), key: 'nokia' },
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/BumbleLogo')), key: 'bumble' },
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/SchibstedLogo')), key: 'schibsted' },
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/OperaLogo')), key: 'opera' },
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/BonterraLogo')), key: 'bonterra' },
+  { component: lazy(() => import('../lazyloading-utils/trusted-companies/ZoomLogo')), key: 'zoom' }
 ];
 
 const LogoPlaceholder = () => (
@@ -34,7 +34,7 @@ const TrustedCompaniesSection = () => (
       }
     >
       <div className="w-full grid grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-6 items-center justify-items-center">
-        {logos.map(({ Component, key }) => (
+        {logos.map(({ component: Component, key }) => (
           <Component
             key={key}
             className="transition duration-200 hover:shadow-lg hover:scale-105 p-2 cursor-pointer object-contain"
