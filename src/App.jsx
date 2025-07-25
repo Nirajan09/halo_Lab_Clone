@@ -29,7 +29,7 @@ import ProjectDiscussionSectionSkeleton from './components/project-discussion-se
 import ContactSectionSkeleton from './components/contact-section/ContactSectionSkeleton'
 import BlogCardsSkeleton from './components/blog-cards/BlogCardsSkeleton'
 
-function SectionWithSkeleton({ loading, Skeleton, children, ...fadeProps }) {
+function SectionWithSkeleton({ loading, skeleton: Skeleton, children, ...fadeProps }) {
   return loading
     ? <Skeleton />
     : <ScrollFadeInSection {...fadeProps}>{children}</ScrollFadeInSection>;
