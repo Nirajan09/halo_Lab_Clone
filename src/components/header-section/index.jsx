@@ -70,7 +70,7 @@ const NavbarSection = () => {
         <ul className="flex list-none gap-2 p-0 m-0 flex-wrap">
           {/* SERVICES Dropdown */}
           <li
-            className="relative flex items-center uppercase text-[13px]"
+            className="relative flex items-center uppercase"
             onMouseEnter={openServices}
             onMouseLeave={() => setIsServicesOpen(false)}
             id="services"
@@ -167,7 +167,7 @@ const NavbarSection = () => {
 
           {/* RESOURCES Dropdown */}
           <li
-            className="relative flex items-center uppercase text-[13px]"
+            className="relative flex items-center uppercase"
             onMouseEnter={openResources}
             onMouseLeave={() => setIsResourcesOpen(false)}
           >
