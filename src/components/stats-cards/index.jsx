@@ -1,4 +1,6 @@
-const stats = [
+import { memo } from "react";
+
+const STATS = [
   {
     value: "$530M",
     label: (
@@ -31,15 +33,15 @@ const stats = [
   },
 ];
 
-export default function StatCards() {
+function StatCards() {
   return (
     <section
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 section"
       aria-label="Company statistics"
     >
-      {stats.map(({ value, label, labelText }, idx) => (
+      {STATS.map(({ value, label, labelText }, i) => (
         <article
-          key={idx}
+          key={labelText}
           aria-label={labelText}
           className="
             rounded-2xl bg-[#2F1F4A] px-8 py-8 shadow-lg min-w-[270px] relative flex flex-col items-start
@@ -51,7 +53,7 @@ export default function StatCards() {
           tabIndex={0}
           role="region"
         >
-          <div className="text-[2.5rem] font-bold text-[#FDC448] mb-4 font-sans leading-none">
+          <div className="text-[2.5rem] font-bold text-[#FDC448] mb-4 font-sans leading-none select-none">
             {value}
           </div>
           <hr className="border-[#68568B] opacity-60 mb-4 w-full transition-colors duration-300 group-hover:border-[#FDC448]" />
@@ -63,3 +65,5 @@ export default function StatCards() {
     </section>
   );
 }
+
+export default memo(StatCards);
