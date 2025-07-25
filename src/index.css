@@ -1,14 +1,17 @@
 @import "tailwindcss";
-*{
-  
+
+/* Reset all font-family */
+* {
   font-family: 'Suisse Intl', sans-serif;
 }
 
+/* ---- Font Faces ---- */
 @font-face {
   font-family: 'Suisse Intl';
   src: url('/fonts/fonnts.com-Suisse_Intl_Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -16,6 +19,7 @@
   src: url('/fonts/fonnts.com-Suisse_Intl_Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -23,6 +27,7 @@
   src: url('/fonts/fonnts.com-Suisse_Intl_Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -30,10 +35,11 @@
   src: url('/fonts/fonnts.com-Suisse_Intl_Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
-
+/* ---- Body styles ---- */
 body {
   background-color: #02021E;
-  width:100%;
+  width: 100%;
 }
