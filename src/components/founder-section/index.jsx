@@ -15,10 +15,10 @@ const FounderSection = () => (
     <div className="flex gap-4 mt-3 items-center md:items-start md:w-1/4 md:flex-col">
       <div className="mb-2">
         <Suspense fallback={<div className="w-[158px] h-[64px] bg-gray-700 rounded-lg animate-pulse" />}>
-          <LazyImage
-            src="/founder/founder-image.png"  // <-- Update this path to your founder image location
+          <LazyAvatar
+            src="https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/64c90175fe3bf5e15444ddcf_ava-founders.avif"  
             alt="Founders of Halo Lab"
-            className="rounded-lg shadow w-[158px] h-[64px] object-cover"
+            className="rounded-lg shadow"
           />
         </Suspense>
       </div>
