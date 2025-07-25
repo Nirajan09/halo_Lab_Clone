@@ -117,7 +117,7 @@ function App() {
         <SectionWithSkeleton
           key={key}
           loading={loading}
-          Skeleton={skeleton}
+          skeleton={skeleton}
         >
           {component}
         </SectionWithSkeleton>
