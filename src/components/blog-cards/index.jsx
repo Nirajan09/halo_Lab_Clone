@@ -1,4 +1,4 @@
-import  { useState, useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import LazyImage from "../lazyloading-utils/blog-cards/index";
 
 const cards = [
@@ -19,18 +19,15 @@ const cards = [
 const IMAGE_HOVER_DELAY = 180; // ms
 
 const BlogCards = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  // Only manage delayedIdx and timer
   const [delayedIdx, setDelayedIdx] = useState(null);
   const timer = useRef(null);
 
-  // Use useCallback to memoize handlers to avoid recreating functions on every render
   const handleCardMouseEnter = useCallback(idx => {
-    setHoveredIndex(idx);
     timer.current = setTimeout(() => setDelayedIdx(idx), IMAGE_HOVER_DELAY);
   }, []);
 
   const handleCardMouseLeave = useCallback(() => {
-    setHoveredIndex(null);
     if (timer.current) {
       clearTimeout(timer.current);
       timer.current = null;
