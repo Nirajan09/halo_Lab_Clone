@@ -1,4 +1,5 @@
-import { lazy, Suspense, memo, useMemo } from 'react';
+import { lazy, Suspense, memo } from 'react';
+import { useMemoizedValue } from '../../utils/useMemoizedValue';
 
 // Lazy load avatar only once for efficiency
 const LazyAvatar = lazy(() => import('../lazyloading-utils/LazyAvatar'));
@@ -27,13 +28,10 @@ const achievements = [
   },
 ];
 
-// Marquee repetition - memoize for performance (only recomputes if achievements changes)
 const SCROLL_DURATION = 30; // seconds
+const REPEAT_COUNT = 4;     // For clarity and maintainability
 
-const useRepeatedAchievements = (achievements, times) =>
-  useMemo(() => Array(times).fill(achievements).flat(), [achievements, times]);
-
-// Pure memoized Achievement Item
+// Memoized Achievement Item 
 const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
   return (
     <div
@@ -50,7 +48,7 @@ const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
           src={avatarSrc}
           alt={title}
           className="w-20 h-20 rounded-full object-cover"
-          draggable={false} // prevents accidental drag ghost
+          draggable={false}
           loading="lazy"
           decoding="async"
         />
@@ -61,11 +59,14 @@ const AchievementItem = memo(function AchievementItem({ avatarSrc, title }) {
     </div>
   );
 });
-
 AchievementItem.displayName = "AchievementItem";
 
 function AchievementsSection() {
-  const repeatedAchievements = useRepeatedAchievements(achievements, 4);
+  // Use generic hook for repeated achievements
+  const repeatedAchievements = useMemoizedValue(
+    () => Array(REPEAT_COUNT).fill(achievements).flat(),
+    [achievements]
+  );
 
   return (
     <section className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
