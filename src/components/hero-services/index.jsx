@@ -1,27 +1,9 @@
-import { memo, useCallback } from "react";
+import { memo } from "react";
+import { useMemoizedValue } from "../../utils/useMemoizedValue";
+import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import { RiArrowRightUpLine } from "react-icons/ri";
 
-// Moved static arrays outside the component for stability
-const DESIGN_SERVICES = [
-  "UI/UX design",
-  "Web design",
-  "Mobile app design",
-  "Landing page design",
-  "Branding",
-];
-
-const DEV_SERVICES = [
-  "Web development",
-  "Software development",
-  "CMS development",
-  "Webflow development",
-  "Mobile development",
-];
-
-const handleServiceSelect = (label) => {
-  alert(`Selected ${label}`);
-};
-
+// List item and border class helpers (can also memoize if derived/computed)
 const LIST_ITEM_BASE_CLASSES =
   "cursor-pointer flex items-center justify-between py-2 w-full group transition-colors";
 
@@ -29,10 +11,29 @@ const getBorderClass = (i, arr) =>
   i < arr.length - 1 ? "border-b border-[#b3b3b8] pb-1" : "";
 
 const HeroServicesSection = () => {
-  // Stable callbacks for keyboard and click select
-  const handleKeyDown = useCallback((label, e) => {
-    if (e.key === "Enter" || e.key === " ") handleServiceSelect(label);
+  const designServices = useMemoizedValue(() => [
+    "UI/UX design",
+    "Web design",
+    "Mobile app design",
+    "Landing page design",
+    "Branding",
+  ], []);
+
+  const devServices = useMemoizedValue(() => [
+    "Web development",
+    "Software development",
+    "CMS development",
+    "Webflow development",
+    "Mobile development",
+  ], []);
+
+  const handleServiceSelect = useMemoizedCallback(label => {
+    alert(`Selected ${label}`);
   }, []);
+
+  const handleKeyDown = useMemoizedCallback((label, e) => {
+    if (e.key === "Enter" || e.key === " ") handleServiceSelect(label);
+  }, [handleServiceSelect]);
 
   return (
     <section className="section min-h-[30vh] flex flex-col items-center justify-center" aria-labelledby="services-headline">
@@ -54,7 +55,7 @@ const HeroServicesSection = () => {
             Design
           </h2>
           <ul>
-            {DESIGN_SERVICES.map((label, i, arr) => (
+            {designServices.map((label, i, arr) => (
               <li
                 key={label}
                 className={`${LIST_ITEM_BASE_CLASSES} ${getBorderClass(i, arr)}`}
@@ -62,7 +63,7 @@ const HeroServicesSection = () => {
                 tabIndex={0}
                 aria-label={label}
                 onClick={() => handleServiceSelect(label)}
-                onKeyDown={(e) => handleKeyDown(label, e)}
+                onKeyDown={e => handleKeyDown(label, e)}
               >
                 <span className="text-base">{label}</span>
                 <RiArrowRightUpLine
@@ -80,7 +81,7 @@ const HeroServicesSection = () => {
             Development
           </h2>
           <ul>
-            {DEV_SERVICES.map((label, i, arr) => (
+            {devServices.map((label, i, arr) => (
               <li
                 key={label}
                 className={`${LIST_ITEM_BASE_CLASSES} ${getBorderClass(i, arr)}`}
@@ -88,7 +89,7 @@ const HeroServicesSection = () => {
                 tabIndex={0}
                 aria-label={label}
                 onClick={() => handleServiceSelect(label)}
-                onKeyDown={(e) => handleKeyDown(label, e)}
+                onKeyDown={e => handleKeyDown(label, e)}
               >
                 <span className="text-base">{label}</span>
                 <RiArrowRightUpLine
