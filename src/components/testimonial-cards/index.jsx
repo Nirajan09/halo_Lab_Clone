@@ -3,13 +3,12 @@ import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
 
-// DRY static import for lazy image usage
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const AUTO_ADVANCE_DELAY = 5000; // ms
 
 function TestimonialCard() {
-  // Memoized cards array
+  // Memoize cards array for stability and scalability
   const cards = useMemoizedValue(() => [
     {
       tag: "marketplace",
@@ -22,7 +21,50 @@ function TestimonialCard() {
       authorDescription: "SVP, Marketing",
       workImage: "./testimonials/works/6719144ea7fcb629b8c71ae6_works-audit-HomeQ.avif"
     },
-    // ... rest of your cards here ...
+    {
+      tag: "TRANSPORTATION & LOGISTICS",
+      flagImageSrc: "../testimonials/flags/66ab5671b25d942cf11814bb_flag-France.avif",
+      works: "Linkbycar raised €1.4M in funding and strengthened its market position",
+      starIcon: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg",
+      text: "Halo Lab offers a broad mix of expertise and always comes up with excellent solutions. They completed the project efficiently and on schedule.",
+      authorImage: "../testimonials/author/67e5100e2eed105d01a8cc6b_review-ava_Saidou-Soumare2.avif",
+      authorName: "Saidou Soumare",
+      authorDescription: "CTO at Linkbycar",
+      workImage: "./testimonials/works/67add53c74d185f9063e5a8d_results-Linkbycar.avif"
+    },
+    {
+      tag: "real estate",
+      flagImageSrc: "../testimonials/flags/67c06382ce089ee9cac4fabf_flag-Portugal.avif",
+      works: "Strong branding helped Relocate Now gain 1,400+ nomads in a year",
+      starIcon: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg",
+      text: "Halo Lab follows a systematic planning approach to reach targets on time. Communication throughout was seamless and highly valuable.",
+      authorImage: "../testimonials/author/671f8415c64a592b60341289_review-ava_Alvaro-Araujo.avif",
+      authorName: "Alvaro Araujo",
+      authorDescription: "Founder & CEO, Relocate Now",
+      workImage: "./testimonials/works/6812015839e18a614d927c94_results-Relocate2.avif"
+    },
+    {
+      tag: "SAAS",
+      flagImageSrc: "../testimonials/flags/66ab5672df09cccbbfafb714_flag-USA.avif",
+      works: "WeSpire raised $13M in its latest funding round and $23.7M in total",
+      starIcon: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg",
+      text: "After Halo Lab revamped our platform, traffic improved by 35%, and user engagement increased with a reduced bounce rate of 20%.",
+      authorImage: "../testimonials/author/65856676d93b5382ccf5c3e8_ava-justin-lopez.avif",
+      authorName: "Justin Lopez",
+      authorDescription: "DGM @ Wespire",
+      workImage: "./testimonials/works/6719144e5f1284ab31bccfd8_works-audit-WeSpire.avif"
+    },
+    {
+      tag: "Education",
+      flagImageSrc: "../testimonials/flags/67bda237b702f3e3c050d9ee_flag-UAE.avif",
+      works: "Thoughtful UI/UX helped ASI app surpass 4 million student queries",
+      starIcon: "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg",
+      text: "We developed a student-centric app with user-friendly design, transforming difficult processes into fun and easy experiences, increasing retention.",
+      authorImage: "../testimonials/author/65856676d93b5382ccf5c3e8_ava-justin-lopez.avif",
+      authorName: "UX/UI Design",
+      authorDescription: "2 Months",
+      workImage: "./testimonials/works/681200a7712ca3755b94a098_results-ASI.avif"
+    },
     {
       tag: "HEALTHCARE",
       flagImageSrc: "../testimonials/flags/66ab5671023787dcce263398_flag-Austria.avif",
@@ -69,8 +111,18 @@ function TestimonialCard() {
 
   const card = cards[currentIndex];
 
+  // Defensive avatar/image rendering helper
+  function SafeLazyAvatar(props) {
+    return props.src ? <LazyAvatar {...props} /> : null;
+  }
+
   return (
-    <section className="section flex flex-col items-center" aria-label="Success story testimonials" tabIndex={0} onKeyDown={handleKeyDown}>
+    <section
+      className="section flex flex-col items-center"
+      aria-label="Success story testimonials"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       <h1 className="text-4xl md:text-6xl font-semibold text-white text-center mb-10">
         WHERE GREAT IDEAS <br />
         <span className="text-[#FDC54B]">BECAME REAL RESULTS</span>
@@ -96,7 +148,7 @@ function TestimonialCard() {
             <span className="text-sm text-black font-normal mb-2 md:mb-4 flex items-center gap-1 uppercase">
               <span className="mt-1">{card.tag}</span>
               <Suspense fallback={<div className="w-6 h-6 bg-gray-200 rounded-full animate-pulse ml-2" />}>
-                <LazyAvatar
+                <SafeLazyAvatar
                   src={card.flagImageSrc}
                   alt={`${card.tag} flag`}
                   className="w-6 h-6 rounded-full ml-2 object-cover"
@@ -110,7 +162,7 @@ function TestimonialCard() {
             <div className="flex items-center mb-3">
               {[...Array(5)].map((_, i) => (
                 <Suspense key={i} fallback={<div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />}>
-                  <LazyAvatar
+                  <SafeLazyAvatar
                     src={card.starIcon}
                     alt="Rating Star"
                     className="w-5 h-5 object-cover"
@@ -125,7 +177,7 @@ function TestimonialCard() {
             </p>
             <div className="flex items-center gap-3 mt-2">
               <Suspense fallback={<div className="w-9 h-9 rounded-full bg-gray-200 animate-pulse" />}>
-                <LazyAvatar
+                <SafeLazyAvatar
                   src={card.authorImage}
                   alt={card.authorName}
                   className="w-9 h-9 rounded-full border-2 border-yellow-400 object-cover"
@@ -145,7 +197,7 @@ function TestimonialCard() {
           {/* Work image */}
           <div className="flex-1 flex items-center justify-center">
             <Suspense fallback={<div className="w-full h-56 bg-gray-200 rounded-xl animate-pulse" />}>
-              <LazyAvatar
+              <SafeLazyAvatar
                 src={card.workImage}
                 alt={`${card.tag} work`}
                 className="rounded-xl shadow-lg w-full h-full object-cover"

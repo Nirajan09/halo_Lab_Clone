@@ -1,14 +1,12 @@
 import { lazy, Suspense } from "react";
 
-const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
+const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const AchievementCardSkeleton = () => (
   <div className="flex flex-col items-center justify-center text-center bg-[#13143a] rounded-full w-42 h-42 sm:w-52 sm:h-52 lg:w-[290px] lg:h-[290px] mx-auto shadow-md">
     <Suspense
       fallback={
         <img
-          src=""
-          alt=""
           className="w-20 h-20 rounded-full object-cover bg-gray-700 animate-pulse mb-3"
           draggable={false}
           aria-hidden="true"
