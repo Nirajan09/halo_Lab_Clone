@@ -1,9 +1,12 @@
-import { useRef, useCallback, useState, lazy, Suspense, memo, useEffect } from "react";
+import { useRef, useState, lazy, Suspense, memo, useEffect } from "react";
+import { useMemoizedValue } from "../utils/useMemoizedValue";
+import { useMemoizedCallback } from "../utils/useMemoizedCallback";
 
 // Single, shared, lazy-loaded image/avatar component
 const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
 
-const cards = [
+// Cards data (could come from props/api in the future)
+const cardsData = [
   {
     title: "How to build a product — a full guide to the product development process",
     category: "DEVELOPMENT",
@@ -20,7 +23,7 @@ const cards = [
 
 const IMAGE_HOVER_DELAY = 180; // ms
 
-// Memoize BlogCardItem for minimal rerenders
+// Memoized BlogCardItem for minimal re-renders
 const BlogCardItem = memo(function BlogCardItem({
   card,
   idx,
@@ -71,16 +74,18 @@ const BlogCardItem = memo(function BlogCardItem({
 });
 BlogCardItem.displayName = "BlogCardItem";
 
+// Main BlogCards component
 const BlogCards = () => {
+  const cards = useMemoizedValue(() => cardsData, [cardsData]);
   const [delayedIdx, setDelayedIdx] = useState(null);
   const timer = useRef(null);
 
-  // Only stable once, no need to re-create on every render
-  const handleCardMouseEnter = useCallback((idx) => {
+  // Use custom hook for memoizing callbacks
+  const handleCardMouseEnter = useMemoizedCallback((idx) => {
     timer.current = setTimeout(() => setDelayedIdx(idx), IMAGE_HOVER_DELAY);
   }, []);
 
-  const handleCardMouseLeave = useCallback(() => {
+  const handleCardMouseLeave = useMemoizedCallback(() => {
     if (timer.current) {
       clearTimeout(timer.current);
       timer.current = null;
@@ -88,8 +93,7 @@ const BlogCards = () => {
     setDelayedIdx(null);
   }, []);
 
-  // Effect cleanup: on component unmount prevent memory leak
-  // Auto-cleanup timer if BlogCards is unmounted while hovering
+  // Cleanup timer on unmount to prevent memory leak
   useEffect(() => {
     return () => {
       if (timer.current) clearTimeout(timer.current);
