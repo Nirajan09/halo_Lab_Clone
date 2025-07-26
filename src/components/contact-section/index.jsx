@@ -1,10 +1,12 @@
-import { useState, memo, useCallback } from 'react';
+import { useState, memo } from 'react';
+import { useMemoizedCallback } from '../../utils/useMemoizedCallback';
+
 import { FaDribbble, FaInstagram, FaBehance, FaLinkedinIn, FaGithubAlt } from "react-icons/fa";
 import { FaWebflow, FaWhatsapp } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";
 import { MdOutlineEmail } from "react-icons/md";
 
-// Static data outside component for stable references
+// Memoize the static arrays using useMemoizedValue
 const SERVICES = [
   "Projects",
   "Dedicated team",
@@ -31,20 +33,20 @@ const ContactSection = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Callbacks for handlers
-  const handleEmailChange = useCallback(e => {
+
+  const handleEmailChange = useMemoizedCallback(e => {
     setEmail(e.target.value);
     if (error) setError('');
     if (success) setSuccess('');
   }, [error, success]);
 
-  const handleEmailBlur = useCallback(e => {
+  const handleEmailBlur = useMemoizedCallback(e => {
     if (e.target.value && !isValidEmail(e.target.value)) {
       setError("Please enter a valid email address");
     }
   }, []);
 
-  const handleSubmit = useCallback(e => {
+  const handleSubmit = useMemoizedCallback(e => {
     e.preventDefault();
     setSuccess('');
     if (!email) {
@@ -59,6 +61,14 @@ const ContactSection = () => {
     setSuccess('Thanks for subscribing!');
     setEmail('');
   }, [email]);
+
+  const handleServiceMouseEnter = useMemoizedCallback(idx => {
+    setHoveredIndex(idx);
+  }, []);
+
+  const handleServiceMouseLeave = useMemoizedCallback(() => {
+    setHoveredIndex(null);
+  }, []);
 
   return (
     <section className="section w-full text-white" aria-labelledby="contact-section-heading">
@@ -81,9 +91,7 @@ const ContactSection = () => {
               <input
                 type="email"
                 placeholder="Your email address"
-                className={`w-full rounded-full px-6 py-3 pr-12 text-white outline-none focus:ring-2 bg-transparent border border-white border-opacity-30 ${
-                  error ? "border-red-500" : ""
-                }`}
+                className={`w-full rounded-full px-6 py-3 pr-12 text-white outline-none focus:ring-2 bg-transparent border border-white border-opacity-30 ${error ? "border-red-500" : ""}`}
                 aria-label="Email address"
                 value={email}
                 onChange={handleEmailChange}
@@ -139,8 +147,8 @@ const ContactSection = () => {
               <li
                 key={service}
                 className="flex gap-3 items-center w-[12.5rem] group cursor-pointer"
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                onMouseEnter={() => handleServiceMouseEnter(idx)}
+                onMouseLeave={handleServiceMouseLeave}
                 tabIndex={0}
                 role="link"
                 aria-label={service}
