@@ -1,9 +1,11 @@
-import { useState, useCallback, memo } from "react";
+import { useState, memo } from "react";
+import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
+import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { RiArrowDropDownLine, RiArrowDropUpLine, RiArrowDropRightLine } from "react-icons/ri";
 import Menu from "./Menu";
 
-// Static arrays declared outside component for referential stability
+// Static arrays outside component for referential stability
 const DESIGN_COLUMNS = [
   ["UI/UX design", "Product audit", "Branding", "Rebranding"],
   ["Web design", "Landing page design", "Mobile app design", "Pitch deck design"],
@@ -22,22 +24,27 @@ const NavbarSection = () => {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isHamBurgerOpen, setIsHamBurgerOpen] = useState(false);
 
+  // Memoized arrays for scalable pattern
+  const designColumns = useMemoizedValue(() => DESIGN_COLUMNS, []);
+  const devColumns = useMemoizedValue(() => DEV_COLUMNS, []);
+  const resourceColumns = useMemoizedValue(() => RESOURCE_COLUMNS, []);
+
   // Callback handlers to avoid unnecessary function re-creations
-  const openServices = useCallback(() => {
+  const openServices = useMemoizedCallback(() => {
     setIsServicesOpen(true);
     setIsResourcesOpen(false);
   }, []);
-  const openResources = useCallback(() => {
+  const openResources = useMemoizedCallback(() => {
     setIsResourcesOpen(true);
     setIsServicesOpen(false);
   }, []);
-  const closeDropdowns = useCallback(() => {
+  const closeDropdowns = useMemoizedCallback(() => {
     setIsServicesOpen(false);
     setIsResourcesOpen(false);
   }, []);
 
   // Keyboard accessibility: toggle hamburger on Enter/Space
-  const handleHamburgerKeyDown = useCallback(
+  const handleHamburgerKeyDown = useMemoizedCallback(
     (e) => {
       if (e.key === "Enter" || e.key === " ") setIsHamBurgerOpen((v) => !v);
     },
@@ -103,7 +110,7 @@ const NavbarSection = () => {
                 <div className="w-1/2 pr-8">
                   <h4 className="mb-2 ml-2 text-base font-bold">Design</h4>
                   <div className="flex gap-4">
-                    {DESIGN_COLUMNS.map((col, idx) => (
+                    {designColumns.map((col, idx) => (
                       <div className="w-1/2" key={`design-col-${idx}`}>
                         {col.map((text) => (
                           <div
@@ -128,7 +135,7 @@ const NavbarSection = () => {
                 <div className="w-1/2 pl-8 border-l border-gray-200">
                   <h4 className="mb-2 ml-2 text-base font-bold">Development</h4>
                   <div className="flex gap-4">
-                    {DEV_COLUMNS.map((col, idx) => (
+                    {devColumns.map((col, idx) => (
                       <div className="w-1/2" key={`dev-col-${idx}`}>
                         {col.map((text) => (
                           <div
@@ -197,7 +204,7 @@ const NavbarSection = () => {
               >
                 <div className="w-full">
                   <div className="flex flex-col">
-                    {RESOURCE_COLUMNS.map((text) => (
+                    {resourceColumns.map((text) => (
                       <div
                         className="flex items-center justify-between py-2 px-3 font-medium text-[15px] rounded hover:bg-gray-100 cursor-pointer transition group"
                         key={text}

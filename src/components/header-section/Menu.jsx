@@ -1,4 +1,6 @@
-import { useState, useCallback, memo } from "react";
+import { useState, memo } from "react";
+import { useMemoizedValue } from "../../utils/useMemoizedValue";
+import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 
 // Data for services and resources, declared outside for stability/reusability
@@ -15,10 +17,15 @@ const RESOURCE_ITEMS = ["Our Blog", "Open Source"];
 const Menu = () => {
   const [open, setOpen] = useState(""); // "" | "services" | "resources"
 
-  // Handlers are stable (memoized)
-  const openServices = useCallback(() => setOpen("services"), []);
-  const openResources = useCallback(() => setOpen("resources"), []);
-  const close = useCallback(() => setOpen(""), []);
+  // Memoize arrays for future scalability (ready for prop/context/async/etc)
+  const designServices = useMemoizedValue(() => DESIGN_SERVICES, []);
+  const developmentServices = useMemoizedValue(() => DEVELOPMENT_SERVICES, []);
+  const resourceItems = useMemoizedValue(() => RESOURCE_ITEMS, []);
+
+  // Stable memoized handlers
+  const openServices = useMemoizedCallback(() => setOpen("services"), []);
+  const openResources = useMemoizedCallback(() => setOpen("resources"), []);
+  const close = useMemoizedCallback(() => setOpen(""), []);
 
   // Accessible Row item
   const NavRow = ({ children, onClick, rightIcon, ...props }) => (
@@ -76,12 +83,12 @@ const Menu = () => {
               <h4 className="text-gray-400 text-base leading-tight tracking-wide mb-3 font-normal">DESIGN</h4>
               <div className="flex gap-2">
                 <div className="flex flex-col gap-1 w-1/2">
-                  {DESIGN_SERVICES.slice(0, 4).map(text => (
+                  {designServices.slice(0, 4).map(text => (
                     <div key={text} className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition hover:text-indigo-600" tabIndex={0}>{text}</div>
                   ))}
                 </div>
                 <div className="flex flex-col gap-1 w-1/2">
-                  {DESIGN_SERVICES.slice(4).map(text => (
+                  {designServices.slice(4).map(text => (
                     <div key={text} className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition hover:text-indigo-600" tabIndex={0}>{text}</div>
                   ))}
                 </div>
@@ -92,12 +99,12 @@ const Menu = () => {
               <h4 className="text-gray-400 text-base leading-tight tracking-wide mb-3 font-normal">DEVELOPMENT</h4>
               <div className="flex gap-2">
                 <div className="flex flex-col gap-1 w-1/2">
-                  {DEVELOPMENT_SERVICES.slice(0, 4).map(text => (
+                  {developmentServices.slice(0, 4).map(text => (
                     <div key={text} className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition hover:text-indigo-600" tabIndex={0}>{text}</div>
                   ))}
                 </div>
                 <div className="flex flex-col gap-1 w-1/2">
-                  {DEVELOPMENT_SERVICES.slice(4).map(text => (
+                  {developmentServices.slice(4).map(text => (
                     <div key={text} className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition hover:text-indigo-600" tabIndex={0}>{text}</div>
                   ))}
                 </div>
@@ -125,7 +132,7 @@ const Menu = () => {
           </div>
           <hr className="border border-gray-300 mb-4" />
           <div className="flex gap-2">
-            {RESOURCE_ITEMS.map((text, i) => (
+            {resourceItems.map((text, i) => (
               <div className="flex flex-col w-1/2" key={i}>
                 <div className="text-gray-900 font-medium text-base py-4 px-0 cursor-pointer transition-colors hover:text-indigo-600" tabIndex={0}>
                   {text}
