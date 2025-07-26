@@ -1,45 +1,50 @@
 import { memo } from "react";
-
-const STATS = [
-  {
-    value: "$530M",
-    label: (
-      <>
-        Total funds raised<br />
-        by our clients
-      </>
-    ),
-    labelText: "Total funds raised by our clients",
-  },
-  {
-    value: "500+",
-    label: (
-      <>
-        Completed projects<br />
-        across industries
-      </>
-    ),
-    labelText: "Completed projects across industries",
-  },
-  {
-    value: "$25.86B",
-    label: (
-      <>
-        Recent market cap of our<br />
-        biggest client
-      </>
-    ),
-    labelText: "Recent market cap of our biggest client",
-  },
-];
+import { useMemoizedValue } from "../../utils/useMemoizedValue";
 
 function StatCards() {
+  // Memoize the STATS array for stability, future-proofing, and DRY consistency
+  const stats = useMemoizedValue(
+    () => [
+      {
+        value: "$530M",
+        label: (
+          <>
+            Total funds raised<br />
+            by our clients
+          </>
+        ),
+        labelText: "Total funds raised by our clients",
+      },
+      {
+        value: "500+",
+        label: (
+          <>
+            Completed projects<br />
+            across industries
+          </>
+        ),
+        labelText: "Completed projects across industries",
+      },
+      {
+        value: "$25.86B",
+        label: (
+          <>
+            Recent market cap of our<br />
+            biggest client
+          </>
+        ),
+        labelText: "Recent market cap of our biggest client",
+      },
+    ],
+    []
+  );
+
   return (
     <section
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 section"
       aria-label="Company statistics"
     >
-      {STATS.map(({ value, label, labelText }, i) => (
+      {stats.map(({ value, label, labelText }, i) => (
         <article
           key={i}
           aria-label={labelText}
