@@ -1,10 +1,8 @@
-// src/sections/TestimonialCardSkeleton.jsx
-import React, { lazy, Suspense } from "react";
+import  { lazy, Suspense } from "react";
 
 // Use the same LazyAvatar for all images (future-proof, matches live code)
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
-// Replace array lengths as needed to match your real cards
 const SKELETON_STAR_COUNT = 5;
 
 function TestimonialCardSkeleton() {
