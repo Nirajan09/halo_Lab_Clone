@@ -1,6 +1,6 @@
 import { useRef, useState, lazy, Suspense, memo, useEffect } from "react";
-import { useMemoizedValue } from "../utils/useMemoizedValue";
-import { useMemoizedCallback } from "../utils/useMemoizedCallback";
+import { useMemoizedValue } from "../../utils/useMemoizedValue";
+import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 
 // Single, shared, lazy-loaded image/avatar component
 const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
