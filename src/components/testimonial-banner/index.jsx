@@ -2,7 +2,7 @@ import { lazy, Suspense, useState, memo } from "react";
 import { FaLessThan, FaGreaterThan } from "react-icons/fa6";
 
 // Lazy loaded avatar/star
-const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
+const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 const STAR_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/63ff2cb2a75a0475348a5685_icon-star.svg";
 const CLUTCH_SRC = "https://cdn.prod.website-files.com/63f38a8c92397a024fcb9ae8/659faade8c491caeb4e43ac5_logo-clutch.svg";
 const AUTHOR_MAN_SRC = "../author/6596ea8404d31b14e01e406f_reviews-man.avif";

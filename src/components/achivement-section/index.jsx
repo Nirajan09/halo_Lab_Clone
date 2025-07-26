@@ -2,7 +2,7 @@ import { lazy, Suspense, memo } from 'react';
 import { useMemoizedValue } from '../../utils/useMemoizedValue';
 
 // Lazy load avatar only once for efficiency
-const LazyAvatar = lazy(() => import('../lazyloading-utils/LazyAvatar'));
+const LazyAvatar = lazy(() => import('../../utils/LazyAvatar'));
 
 // Static achievements data
 const achievements = [

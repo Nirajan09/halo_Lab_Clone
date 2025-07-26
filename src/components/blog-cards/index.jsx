@@ -3,7 +3,7 @@ import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 
 // Single, shared, lazy-loaded image/avatar component
-const LazyAvatar = lazy(() => import("../lazyloading-utils/LazyAvatar"));
+const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 // Cards data (could come from props/api in the future)
 const cardsData = [
