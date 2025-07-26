@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 // Lazy load your reusable LazyAvatar
 const LazyAvatar = lazy(() => import('../../utils/LazyAvatar'));
