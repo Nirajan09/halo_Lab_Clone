@@ -1,5 +1,8 @@
-import { memo } from "react";
+import { lazy, Suspense, memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
+
+// Lazy load LazyAvatar for DRY consistency
+const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const HeroSection = () => {
   // Memoize URLs for DRY consistency and future-proofing
@@ -49,16 +52,22 @@ const HeroSection = () => {
         </h1>
         <div className="flex flex-col items-center md:items-start">
           <div className="flex items-center text-base gap-4 mb-4">
-            <img
-              src={fireIconUrl}
-              loading="lazy"
-              alt="Animated fire icon"
-              className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
-              width={48}
-              height={48}
-              decoding="async"
-              draggable={false}
-            />
+            <Suspense
+              fallback={
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 animate-pulse" />
+              }
+            >
+              <LazyAvatar
+                src={fireIconUrl}
+                loading="lazy"
+                alt="Animated fire icon"
+                className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                width={48}
+                height={48}
+                decoding="async"
+                draggable={false}
+              />
+            </Suspense>
             <p className="text-base sm:text-xl">
               12 years of design-driven development for B2B products
             </p>
