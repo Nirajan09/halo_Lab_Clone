@@ -165,7 +165,7 @@ const NavbarSection = () => {
             <li key={item}>
               <a
                 href="/"
-                className="uppercase text-[13px] px-2 h-10 flex items-center font-medium hover:text-[#FDC448] transition-colors"
+                className="px-2 h-10 flex items-center font-medium hover:text-[#FDC448] transition-colors"
               >
                 {item}
               </a>
@@ -228,7 +228,7 @@ const NavbarSection = () => {
           <li>
             <a
               href="/"
-              className="uppercase text-[13px] px-2 h-10 flex items-center font-medium hover:text-[#FDC448] transition-colors"
+              className="px-2 h-10 flex items-center font-medium hover:text-[#FDC448] transition-colors"
             >
               Pricing
             </a>
