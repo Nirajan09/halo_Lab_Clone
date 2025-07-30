@@ -4,6 +4,7 @@ import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { RiArrowDropDownLine, RiArrowDropUpLine, RiArrowDropRightLine } from "react-icons/ri";
 import Menu from "./Menu";
+import { useNavigate } from 'react-router-dom';
 
 // Static arrays outside component for referential stability
 const DESIGN_COLUMNS = [
@@ -17,9 +18,9 @@ const DEV_COLUMNS = [
 ];
 
 const RESOURCE_COLUMNS = ["Our Blog", "Open Source"];
-
 // Avoid recreating handlers on every render
 const NavbarSection = () => {
+  const navigate = useNavigate();
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isHamBurgerOpen, setIsHamBurgerOpen] = useState(false);
@@ -241,6 +242,7 @@ const NavbarSection = () => {
         <button
           className="bg-white text-black px-3 py-1 rounded-full font-bold cursor-pointer transition-all text-base hover:bg-[#FDC448] hover:text-[#0a0826] hover:shadow-lg hover:scale-105"
           type="button"
+          onClick={() => navigate('/contact')}
         >
           Contact Us
         </button>
