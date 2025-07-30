@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 // List item and border class helpers (can also memoize if derived/computed)
 const LIST_ITEM_BASE_CLASSES =
@@ -11,6 +12,7 @@ const getBorderClass = (i, arr) =>
   i < arr.length - 1 ? "border-b border-[#b3b3b8] pb-1" : "";
 
 const HeroServicesSection = () => {
+  const navigate=useNavigate()
   const designServices = useMemoizedValue(() => [
     "UI/UX design",
     "Web design",
@@ -134,6 +136,7 @@ const HeroServicesSection = () => {
           "
           type="button"
           aria-label="Book a call"
+          onClick={()=>navigate("/contact")}
         >
           BOOK A CALL
         </button>
