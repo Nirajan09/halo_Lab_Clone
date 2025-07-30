@@ -1,6 +1,6 @@
 import { useState } from "react";
 import contactSchema from "../utils/validateSchema";
-
+import NavbarSection from "../components/header-section/index"
 const initialErrors = {
   name: "",
   email: "",
@@ -44,7 +44,9 @@ const ContactUs = () => {
   };
 
   return (
-   <div className="mt-3 w-full h-auto flex flex-col lg:flex-row justify-between text-white">
+    <div className="my-container ">
+    <NavbarSection/>
+   <div className="mt-2 w-full h-auto flex flex-col lg:flex-row justify-between text-white">
       {/* Left Section */}
       <div className="lg:w-[35%] flex flex-col justify-center items-start mb-5 lg:mb-0">
         <h1 className="text-5xl md:text-8xl font-bold text-white leading-tighter">
@@ -197,6 +199,8 @@ const ContactUs = () => {
           </div>
         </form>
       </div>
+    </div>
+    
     </div>
   );
 };
