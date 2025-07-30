@@ -1,10 +1,12 @@
 import { lazy, Suspense, memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
+import { useNavigate } from "react-router-dom";
 
 // Lazy load LazyAvatar for DRY consistency
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const HeroSection = () => {
+  const navigate=useNavigate();
   // Memoize URLs for DRY consistency and future-proofing
   const fireIconUrl = useMemoizedValue(
     () =>
@@ -82,6 +84,7 @@ const HeroSection = () => {
             "
             type="button"
             aria-label="Book a call"
+            onClick={()=>navigate("/contact")}
           >
             BOOK A CALL
           </button>
