@@ -8,8 +8,8 @@ const ACCEPTED_FILE_TYPES = [
   "image/jpg",
 ];
 
-const countWords = (value = "") => {
-  return value.trim().split(/\s+/).filter(Boolean).length;
+const countLetters = (value = "") => {
+  return value.replace(/\s+/g, "").length;
 };
 
 const contactSchema = yup.object().shape({
@@ -19,9 +19,9 @@ const contactSchema = yup.object().shape({
     .matches(/^[A-Za-z\s]+$/, "Full name can only contain letters and spaces.")
     .test(
       "minWords",
-      "Full name must be at least 6 words.",
+      "Full name must be at least 6 letters.",
       value => {
-        return countWords(value) >= 6;
+        return countLetters(value) >= 6;
       }
     ),
 
@@ -49,10 +49,10 @@ const contactSchema = yup.object().shape({
     .required("Please write something about your project.")
     .test(
       "minWords",
-      "Project description must be at least 50 words.",
+      "Project description must be at least 50 letters.",
       value => {
         if (!value) return true;
-        return countWords(value) >= 50;
+        return countLetters(value) >= 50;
       }
     ),
 
