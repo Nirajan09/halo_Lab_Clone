@@ -1,6 +1,5 @@
 import  { lazy, Suspense } from "react";
 
-// Use the same LazyAvatar for all images (future-proof, matches live code)
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const SKELETON_STAR_COUNT = 5;
@@ -17,7 +16,7 @@ function TestimonialCardSkeleton() {
       </h1>
       <div className="bg-white p-8 w-full rounded-3xl shadow-lg group relative">
         <div className="relative bg-[#F5F5F7] rounded-3xl shadow-lg flex flex-col md:flex-row w-full p-2 md:p-8">
-          {/* Left arrow (just skeleton, not interactive) */}
+          {/* Left arrow (just skeleton)*/}
           <div
             className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full p-4 bg-gray-200 border border-gray-300 shadow opacity-0 group-hover:opacity-100"
             style={{ pointerEvents: "none" }}
