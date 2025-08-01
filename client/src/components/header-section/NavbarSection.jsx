@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMemoizedCallback } from "../../utils";
+import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import NavbarLogo from "./NavbarLogo";
 import NavbarLinks from "./NavbarLinks";
 import ContactButton from "./ContactButton";
@@ -14,6 +14,7 @@ import {
   RESOURCE_ITEMS as RESOURCE_COLUMNS,
   STATIC_LINKS
 } from "../../data/navbarMenuData";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 const NavbarSection = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);

@@ -1,6 +1,6 @@
 import "../App.css"
 import AchievementsSection from '../components/achivement-section'
-import FounderSection from '../components/founder-section'
+import FounderSection from '../components/founder-section/FounderSection'
 import HeroSection from '../components/hero-section/HeroSection'
 import HeroServicesSection from '../components/hero-services/HeroServicesSection'
 import NavbarSection from '../components/header-section/NavbarSection'

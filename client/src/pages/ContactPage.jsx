@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import contactSchema from "../utils/validateSchema";
-import NavbarSection from "../components/header-section/index"
+import NavbarSection from "../components/header-section/NavbarSection"
 const initialErrors = {
   name: "",
   email: "",
