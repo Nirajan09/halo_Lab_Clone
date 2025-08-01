@@ -7,7 +7,7 @@ import NavbarSection from '../components/header-section/NavbarSection'
 import TestimonialBannerSection from '../components/testimonial-banner/TestimonialBannerSection'
 import TrustedCompaniesSection from '../components/trusted-companies/TrustedCompaniesSection';
 import StatCards from '../components/stats-cards/StatCards'
-import BlogSection from '../components/blog-section'
+import BlogSection from '../components/blog-section/BlogSection'
 import BlogCards from '../components/blog-cards'
 import ProjectDiscussionSection from '../components/project-discussion-section/ProjectDiscussionSection'
 import ContactSection from '../components/contact-section/ContactSection'
