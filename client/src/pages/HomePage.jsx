@@ -9,7 +9,7 @@ import TrustedCompaniesSection from '../components/trusted-companies/TrustedComp
 import StatCards from '../components/stats-cards/StatCards'
 import BlogSection from '../components/blog-section'
 import BlogCards from '../components/blog-cards'
-import ProjectDiscussionSection from '../components/project-discussion-section'
+import ProjectDiscussionSection from '../components/project-discussion-section/ProjectDiscussionSection'
 import ContactSection from '../components/contact-section'
 import FooterSection from '../components/footer-section'
 import TestimonialCard from '../components/testimonial-cards/TestimonialCard'
