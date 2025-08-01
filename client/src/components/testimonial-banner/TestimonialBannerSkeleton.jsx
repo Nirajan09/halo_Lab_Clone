@@ -1,6 +1,5 @@
 import  { lazy, Suspense } from "react";
 
-// DRY: same LazyAvatar with skeletons!
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const SKELETON_MOBILE_COUNT = 6;

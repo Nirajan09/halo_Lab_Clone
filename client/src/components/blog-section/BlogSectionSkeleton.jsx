@@ -1,5 +1,3 @@
-import React from "react";
-
 const BlogSectionSkeleton = () => (
   <div className="section flex items-center justify-between w-full">
     <div className="grid lg:grid-cols-2 gap-4 md:gap-8 lg:gap-12 w-full items-center">

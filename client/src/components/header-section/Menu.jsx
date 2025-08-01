@@ -15,9 +15,9 @@ const DEVELOPMENT_SERVICES = [
 const RESOURCE_ITEMS = ["Our Blog", "Open Source"];
 
 const Menu = () => {
-  const [open, setOpen] = useState(""); // "" | "services" | "resources"
+  const [open, setOpen] = useState(""); 
 
-  // Memoize arrays for future scalability (ready for prop/context/async/etc)
+  // Memoize arrays for future scalability
   const designServices = useMemoizedValue(() => DESIGN_SERVICES, []);
   const developmentServices = useMemoizedValue(() => DEVELOPMENT_SERVICES, []);
   const resourceItems = useMemoizedValue(() => RESOURCE_ITEMS, []);

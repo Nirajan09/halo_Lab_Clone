@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
-// Number of visible award cards (matches your real array)
 const AWARD_COUNT = 4;
 
 const ProjectDiscussionSectionSkeleton = () => (

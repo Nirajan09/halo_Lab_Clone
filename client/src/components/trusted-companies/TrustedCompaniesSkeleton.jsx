@@ -1,11 +1,9 @@
 import  { lazy, Suspense } from "react";
 
-// Lazy load shared avatar for placeholder consistency
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const LOGO_COUNT = 6;
 
-// Single placeholder using LazyAvatar for skeleton fidelity
 const LogoSkeleton = () => (
   <Suspense
     fallback={

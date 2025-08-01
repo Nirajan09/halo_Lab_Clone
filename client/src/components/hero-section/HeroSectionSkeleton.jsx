@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 
-// Lazy load the same LazyAvatar for consistent skeleton markup
 const LazyAvatar = lazy(() => import("../../utils/LazyAvatar"));
 
 const HeroSectionSkeleton = () => (
