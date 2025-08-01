@@ -6,7 +6,7 @@ import HeroServicesSection from '../components/hero-services'
 import NavbarSection from '../components/header-section'
 import TestimonialBannerSection from '../components/testimonial-banner/TestimonialBannerSection'
 import TrustedCompaniesSection from '../components/trusted-companies/TrustedCompaniesSection';
-import StatCards from '../components/stats-cards'
+import StatCards from '../components/stats-cards/StatCards'
 import BlogSection from '../components/blog-section'
 import BlogCards from '../components/blog-cards'
 import ProjectDiscussionSection from '../components/project-discussion-section'
