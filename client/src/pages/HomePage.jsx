@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavbarSection from '../components/header-section/NavbarSection'
-import SectionsList from '../components/home-component/SectionsList'
+import SectionsList from '../components/homepage-component/SectionsList'
 import "../App.css"
 
 function Home() {
