@@ -8,7 +8,7 @@ import TestimonialBannerSection from '../components/testimonial-banner/Testimoni
 import TrustedCompaniesSection from '../components/trusted-companies/TrustedCompaniesSection';
 import StatCards from '../components/stats-cards/StatCards'
 import BlogSection from '../components/blog-section/BlogSection'
-import BlogCards from '../components/blog-cards'
+import BlogCards from '../components/blog-cards/BlogCards'
 import ProjectDiscussionSection from '../components/project-discussion-section/ProjectDiscussionSection'
 import ContactSection from '../components/contact-section/ContactSection'
 import FooterSection from '../components/footer-section/FooterSection'
