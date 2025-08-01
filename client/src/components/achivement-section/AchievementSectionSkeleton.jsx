@@ -29,7 +29,6 @@ const AchievementCardSkeleton = () => (
     </Suspense>
     {/* Title skeleton */}
     <div className="h-5 w-36 sm:w-48 lg:w-56 bg-gray-700 rounded my-2 animate-pulse" />
-    {/* (Optional: more lines for description, if your real card has them) */}
   </div>
 );
 
@@ -38,7 +37,6 @@ const AchievementsSectionSkeleton = () => (
   <section className="section md:px-10 rounded-xl mx-auto overflow-x-hidden">
     <div
       className="flex gap-8 min-w-max animate-achievements-marquee"
-      // Optionally apply the same animation style as your real section
     >
       {Array.from({ length: CARD_COUNT }).map((_, i) => (
         <AchievementCardSkeleton key={i} />
