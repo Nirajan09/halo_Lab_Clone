@@ -1,7 +1,7 @@
 import "../App.css"
 import AchievementsSection from '../components/achivement-section'
 import FounderSection from '../components/founder-section'
-import HeroSection from '../components/hero-section'
+import HeroSection from '../components/hero-section/HeroSection'
 import HeroServicesSection from '../components/hero-services/HeroServicesSection'
 import NavbarSection from '../components/header-section'
 import TestimonialBannerSection from '../components/testimonial-banner/TestimonialBannerSection'
