@@ -27,33 +27,68 @@ const ContactForm = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await contactSchema.validate({ ...form, file: selectedFile }, { abortEarly: false });
-      setErrors({});
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        budget: "",
-        project: "",
-      });
-      setSelectedFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-      alert("Form submitted successfully!");
-    } catch (validationError) {
-      if (validationError.inner) {
-        const formErrors = {};
-        for (const err of validationError.inner) {
-          if (!formErrors[err.path]) formErrors[err.path] = err.message;
-        }
-        setErrors(formErrors);
-      }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  console.log("Submitting form with data:", form);
+  console.log("Selected file:", selectedFile);
+
+  try {
+    await contactSchema.validate({ ...form, file: selectedFile }, { abortEarly: false });
+    setErrors({});
+
+    const formData = new FormData();
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('phone', form.phone);
+    formData.append('budget', form.budget);
+    formData.append('project', form.project);
+    formData.append('file', selectedFile);
+
+    console.log("FormData prepared, sending to backend...");
+
+    const response = await fetch('http://localhost:4000/contact', {
+      method: 'POST',
+      body: formData,
+    });
+
+    console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Server responded with error:", errorData);
+      alert(`Error: ${errorData.error || 'Something went wrong'}`);
+      return;
     }
-  };
+
+    const responseData = await response.json();
+    console.log("Server success response:", responseData);
+
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      budget: "",
+      project: "",
+    });
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+    alert("Form submitted successfully!");
+  } catch (validationError) {
+    console.log("Validation errors:", validationError);
+    if (validationError.inner) {
+      const formErrors = {};
+      for (const err of validationError.inner) {
+        if (!formErrors[err.path]) formErrors[err.path] = err.message;
+      }
+      setErrors(formErrors);
+    }
+  }
+};
+
+
 
   return (
     <form
