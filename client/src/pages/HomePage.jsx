@@ -3,7 +3,7 @@ import AchievementsSection from '../components/achivement-section'
 import FounderSection from '../components/founder-section'
 import HeroSection from '../components/hero-section/HeroSection'
 import HeroServicesSection from '../components/hero-services/HeroServicesSection'
-import NavbarSection from '../components/header-section'
+import NavbarSection from '../components/header-section/NavbarSection'
 import TestimonialBannerSection from '../components/testimonial-banner/TestimonialBannerSection'
 import TrustedCompaniesSection from '../components/trusted-companies/TrustedCompaniesSection';
 import StatCards from '../components/stats-cards/StatCards'
