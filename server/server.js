@@ -14,7 +14,7 @@ const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'halolab',
-  password: process.env.DATABASE_PASS,
+  password: '@Websites123',
   port: 5432,
 });
 
@@ -42,11 +42,9 @@ app.post('/contact', upload.single('file'), async (req, res) => {
       return res.status(400).json({ error: 'All fields including file are required' });
     }
 
-    const fileData = fs.readFileSync(file.path);
-
     const query = `
-      INSERT INTO contacts (name, email, phone, budget, project, file_name, file_type, file_data)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      INSERT INTO contacts (name, email, phone, budget, project, file_name, file_type)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING id
     `;
 
@@ -58,7 +56,6 @@ app.post('/contact', upload.single('file'), async (req, res) => {
       project,
       file.originalname,
       file.mimetype,
-      fileData,
     ];
 
     const result = await pool.query(query, values);
@@ -72,6 +69,7 @@ app.post('/contact', upload.single('file'), async (req, res) => {
     res.status(500).json({ error: 'Database insertion failed' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
