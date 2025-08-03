@@ -3,7 +3,7 @@ import { useMemoizedValue } from "../../utils/useMemoizedValue";
 
 import AchievementItem from "./AchievementItem";
 import AchievementsMarquee from "./AchievementsMarquee";
-import { achievements } from "../../data/achievementsData";
+import { achievements } from "../achievements/achievementsData";
 
 const REPEAT_COUNT = 4; 
 
