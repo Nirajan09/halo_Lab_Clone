@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { trustedCompanies } from "../../data/trustedCompaniesData";
+import { trustedCompanies } from "./trustedCompaniesData";
 import TrustedLogosGrid from "./TrustedLogosGrid";
 
 const TrustedCompaniesSection = () => (

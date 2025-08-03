@@ -3,8 +3,8 @@ import SectionRenderer from "./SectionRenderer";
 
 import HeroSection from '../../features/hero/HeroSection'
 import HeroSectionSkeleton from '../../features/hero/HeroSectionSkeleton'
-import TrustedCompaniesSection from '../../components/trusted-companies/TrustedCompaniesSection'
-import TrustedCompaniesSkeleton from '../../components/trusted-companies/TrustedCompaniesSkeleton'
+import TrustedCompaniesSection from '../../features/trusted-companies/TrustedCompaniesSection'
+import TrustedCompaniesSkeleton from '../../features/trusted-companies/TrustedCompaniesSkeleton'
 import FounderSection from '../../features/founder/FounderSection'
 import FounderSectionSkeleton from '../../features/founder/FounderSectionSkeleton'
 import AchievementsSection from '../../features/achievements/AchievementsSection'
