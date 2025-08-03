@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { testimonials } from "../../data/testimonialCardsData";
+import { testimonials } from "./testimonialCardsData";
 import TestimonialCardContent from "./TestimonialCardContent";
 import TestimonialCardImage from "./TestimonialCardImage";
 import TestimonialNavigationButton from "./TestimonialNavigationButton";

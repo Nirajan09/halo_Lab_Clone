@@ -1,7 +1,7 @@
 import { useState, memo, lazy} from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
 
-import { reviews as reviewsData } from "../../data/testimonialsBannerData";
+import { reviews as reviewsData } from "./testimonialsBannerData";
 import ClutchBadge from "./ClutchBadge";
 import ReviewSummary from "./ReviewSummary";
 import TestimonialReview from "./TestimonialReview";
