@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { defaultDescription, blogDescription } from "../../data/blogData";
+import { defaultDescription, blogDescription } from "../blog/blogData";
 import HotArticlesButton from "./HotArticlesButton";
 
 const BlogSection = () => {

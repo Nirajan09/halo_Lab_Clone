@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import BlogCardItem from "./BlogCardItem";
-import { blogCardsData } from "../../data/blogCardsData";
+import { blogCardsData } from "../blog/blogCardsData";
 
 const IMAGE_HOVER_DELAY = 180;
 

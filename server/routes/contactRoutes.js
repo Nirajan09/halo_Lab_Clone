@@ -10,7 +10,7 @@ const upload = multer({
   dest: 'uploads/',
   limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
+    const ext = path.extname(file.originalname).toLowerCase() ;
     if (['.pdf', '.jpeg', '.jpg', '.png'].includes(ext)) {
       cb(null, true);
     } else {
