@@ -1,6 +1,6 @@
 import HomePage from "./pages/HomePage"
-import ContactPage from "./pages/ContactPage"
 import { Navigate, Route, Routes } from "react-router-dom"
+import ContactPage from "./features/contact/ContactPage"
 const App = () => {
   return (
     <>

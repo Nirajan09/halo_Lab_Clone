@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import ContactInfo from "../page-components/contactpage-component/ContactInfo";
-import ContactForm from "../page-components/contactpage-component/ContactForm";
-import NavbarSection from "../features/header/NavbarSection";
+import ContactInfoPage from "./ContactInfoPage";
+import ContactFormPage from "./ContactFormPage";
+import NavbarSection from "../header/NavbarSection";
 
 const ContactUs = () => {
   const fileInputRef = useRef(null);
@@ -11,9 +11,9 @@ const ContactUs = () => {
     <div className="my-container">
       <NavbarSection />
       <div className="mt-2 w-full h-auto flex flex-col lg:flex-row justify-between text-white">
-        <ContactInfo />
+        <ContactInfoPage />
         <div className="flex-1 flex flex-col justify-center items-center">
-          <ContactForm
+          <ContactFormPage
             fileInputRef={fileInputRef}
             selectedFile={selectedFile}
             setSelectedFile={setSelectedFile}
