@@ -13,7 +13,7 @@ import {
   DEVELOPMENT_SERVICES as DEV_COLUMNS,
   RESOURCE_ITEMS as RESOURCE_COLUMNS,
   STATIC_LINKS
-} from "../../data/navbarMenuData";
+} from "./navbarMenuData";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 const NavbarSection = () => {
