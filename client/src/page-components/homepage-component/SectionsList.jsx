@@ -5,8 +5,8 @@ import HeroSection from '../../components/hero-section/HeroSection'
 import HeroSectionSkeleton from '../../components/hero-section/HeroSectionSkeleton'
 import TrustedCompaniesSection from '../../components/trusted-companies/TrustedCompaniesSection'
 import TrustedCompaniesSkeleton from '../../components/trusted-companies/TrustedCompaniesSkeleton'
-import FounderSection from '../../components/founder-section/FounderSection'
-import FounderSectionSkeleton from '../../components/founder-section/FounderSectionSkeleton'
+import FounderSection from '../../features/footer/FounderSection'
+import FounderSectionSkeleton from '../../features/footer/FounderSectionSkeleton'
 import AchievementsSection from '../../components/achivement-section/AchievementsSection'
 import AchievementsSectionSkeleton from '../../components/achivement-section/AchievementSectionSkeleton'
 import HeroServicesSection from '../../components/hero-services/HeroServicesSection'
@@ -25,8 +25,8 @@ import ProjectDiscussionSection from '../../components/project-discussion-sectio
 import ProjectDiscussionSectionSkeleton from '../../components/project-discussion-section/ProjectDiscussionSkeleton'
 import ContactSection from '../../features/contact/ContactSection'
 import ContactSectionSkeleton from '../../features/contact/ContactSectionSkeleton'
-import FooterSection from '../../components/footer-section/FooterSection'
-import FooterSectionSkeleton from '../../components/footer-section/FooterSkeleton'
+import FooterSection from '../../features/footer/FooterSection'
+import FooterSectionSkeleton from '../../features/footer/FooterSkeleton'
 
 const sections = [
   {

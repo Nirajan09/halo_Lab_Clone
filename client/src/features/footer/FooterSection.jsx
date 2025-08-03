@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { BADGES, ROWS, LINKS } from "../../data/footerData";
+import { BADGES, ROWS, LINKS } from "../footer/footerData";
 import BadgeItem from "./BadgeItem";
 import ExpandableRow from "./ExpandableRow";
 import FooterLinks from "./FooterLinks";
