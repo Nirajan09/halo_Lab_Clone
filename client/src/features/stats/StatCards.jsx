@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { stats as statsData } from "../../data/statisticsData";
+import { stats as statsData } from "./statisticsData";
 import StatCard from "./StatCard";
 
 function StatCards() {
