@@ -1,16 +1,16 @@
 import  { useMemo } from "react";
 import SectionRenderer from "./SectionRenderer";
 
-import HeroSection from '../../components/hero-section/HeroSection'
-import HeroSectionSkeleton from '../../components/hero-section/HeroSectionSkeleton'
+import HeroSection from '../../features/hero/HeroSection'
+import HeroSectionSkeleton from '../../features/hero/HeroSectionSkeleton'
 import TrustedCompaniesSection from '../../components/trusted-companies/TrustedCompaniesSection'
 import TrustedCompaniesSkeleton from '../../components/trusted-companies/TrustedCompaniesSkeleton'
-import FounderSection from '../../features/footer/FounderSection'
-import FounderSectionSkeleton from '../../features/footer/FounderSectionSkeleton'
+import FounderSection from '../../features/founder/FounderSection'
+import FounderSectionSkeleton from '../../features/founder/FounderSectionSkeleton'
 import AchievementsSection from '../../features/achievements/AchievementsSection'
 import AchievementsSectionSkeleton from '../../features/achievements/AchievementSectionSkeleton'
-import HeroServicesSection from '../../components/hero-services/HeroServicesSection'
-import HeroServicesSectionSkeleton from '../../components/hero-services/HeroServicesSkeleton'
+import HeroServicesSection from '../../features/hero/HeroServicesSection'
+import HeroServicesSectionSkeleton from '../../features/hero/HeroServicesSkeleton'
 import TestimonialBannerSection from '../../features/testimonial/TestimonialBannerSection'
 import TestimonialBannerSectionSkeleton from '../../features/testimonial/TestimonialBannerSkeleton'
 import TestimonialCard from '../../features/testimonial/TestimonialCard'

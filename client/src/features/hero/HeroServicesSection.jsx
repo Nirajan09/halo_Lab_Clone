@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
 import { useMemoizedCallback } from "../../utils/useMemoizedCallback";
 import ServiceList from "./ServiceList";
-import CallToAction from "../../features/hero/CallToAction";
+import CallToAction from "./CallToAction";
 
 const HeroServicesSection = () => {
   const designServices = useMemoizedValue(() => [

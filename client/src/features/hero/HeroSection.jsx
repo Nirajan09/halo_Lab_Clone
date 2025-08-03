@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-import HeroLeftContent from "../../features/hero/HeroLeftContent";
-import HeroRightVideo from "../../features/hero/HeroRightVideo";
+import HeroLeftContent from "./HeroLeftContent";
+import HeroRightVideo from "./HeroRightVideo";
 
 const HeroSection = () => {
   return (
