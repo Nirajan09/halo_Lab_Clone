@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { SERVICES, CONTACT_ICONS } from "../../data/contactData";
+import { SERVICES, CONTACT_ICONS } from "../contact/contactData";
 import NewsletterForm from "./NewsletterForm";
 import SocialIcons from "./SocialIcons";
 import ServicesNav from "./ServicesNav";
