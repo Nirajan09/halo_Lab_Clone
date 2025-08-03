@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import NavbarSection from "../components/header-section/NavbarSection";
 import ContactInfo from "../page-components/contactpage-component/ContactInfo";
 import ContactForm from "../page-components/contactpage-component/ContactForm";
+import NavbarSection from "../features/header/NavbarSection";
 
 const ContactUs = () => {
   const fileInputRef = useRef(null);

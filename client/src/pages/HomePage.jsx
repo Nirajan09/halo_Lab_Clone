@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NavbarSection from '../components/header-section/NavbarSection'
 import SectionsList from '../page-components/homepage-component/SectionsList'
 import "../App.css"
+import NavbarSection from "../features/header/NavbarSection";
 
 function Home() {
   const [loading, setLoading] = useState(true);
