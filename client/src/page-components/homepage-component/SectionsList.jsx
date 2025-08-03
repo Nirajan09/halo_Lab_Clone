@@ -1,5 +1,5 @@
 import  { useMemo } from "react";
-import SectionRenderer from "./SectionRenderer";
+import SectionRenderer from "../../features/home/SectionRenderer";
 
 import HeroSection from '../../features/hero/HeroSection'
 import HeroSectionSkeleton from '../../features/hero/HeroSectionSkeleton'
