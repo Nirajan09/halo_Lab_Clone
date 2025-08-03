@@ -3,7 +3,7 @@ import { useMemoizedValue } from "../../utils/useMemoizedValue";
 
 import FounderText from "./FounderText";
 import FounderImage from "./FounderImage";
-import { founderImage, founderText } from "../../data/founderData";
+import { founderImage, founderText } from "./founderData";
 
 const FounderSection = () => {
   const image = useMemoizedValue(() => founderImage, []);
