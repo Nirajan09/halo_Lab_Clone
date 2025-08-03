@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useMemoizedValue } from "../../utils/useMemoizedValue";
-import { awards as awardsData } from "../../data/awardsData";
+import { awards as awardsData } from "./awardsData";
 import AwardCard from "./AwardCard";
 
 const ProjectDiscussionSection = () => {
