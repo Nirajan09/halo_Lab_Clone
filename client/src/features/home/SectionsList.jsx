@@ -12,9 +12,9 @@ import AchievementsSectionSkeleton from '../achievements/AchievementSectionSkele
 import HeroServicesSection from '../hero/HeroServicesSection'
 import HeroServicesSectionSkeleton from '../hero/HeroServicesSkeleton'
 import TestimonialBannerSection from '../testimonials/TestimonialBannerSection'
-import TestimonialBannerSectionSkeleton from '../testimonials/TestimonialBannerSkeleton'
+import TestimonialBannerSkeleton from '../testimonials/TestimonialBannerSkeleton'
 import TestimonialCard from '../testimonials/TestimonialCard'
-import TestimonialCardSkeleton from '../testimonials/TestimonialCardsSkeleton'
+import TestimonialCardsSkeleton from '../testimonials/TestimonialCardsSkeleton'
 import StatCards from '../stats/StatCards'
 import StatCardsSkeleton from '../stats/StatCardsSkeleton'
 import BlogSection from '../blog/BlogSection'
@@ -57,12 +57,12 @@ const sections = [
   {
     key: 'testimonial-banner',
     component: <TestimonialBannerSection />,
-    skeleton: TestimonialBannerSectionSkeleton,
+    skeleton: TestimonialBannerSkeleton,
   },
   {
     key: 'testimonial-card',
     component: <TestimonialCard />,
-    skeleton: TestimonialCardSkeleton,
+    skeleton: TestimonialCardsSkeleton,
   },
   {
     key: 'stats',
